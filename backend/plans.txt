@@ -1,0 +1,8 @@
+Save all data in mysql database.
+Web hosting library: TBD
+
+
+MySQL database:
+    Users table:
+    Messages table:
+
