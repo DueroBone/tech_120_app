@@ -1,8 +1,8 @@
-Save all data in mysql database.
-Web hosting library: TBD
+Save all data in sqlite database.
+Web hosting library: Django or fastapi
 
 
-MySQL database:
+sqlite database:
     Users table:
     Messages table:
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Views/Manual/home_page.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -14,132 +15,7 @@ class FigmaToCodeApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
       ),
-      home: Scaffold(
-        body: ListView(children: [
-          Frame1(),
-        ]),
-      ),
-    );
-  }
-}
-
-class Frame1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 410,
-          height: 497,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: Colors.white),
-          child: Stack(
-            children: [
-              Positioned(
-                left: 115,
-                top: 87,
-                child: Container(
-                  width: 187,
-                  height: 258,
-                  decoration: BoxDecoration(color: const Color(0xFFD9D9D9)),
-                ),
-              ),
-              Positioned(
-                left: 171,
-                top: 215,
-                child: SizedBox(
-                  width: 93,
-                  height: 61,
-                  child: Text(
-                    'Hello world',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 12,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 302,
-                top: 23,
-                child: Container(
-                  height: 48,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                        clipBehavior: Clip.antiAlias,
-                        decoration: ShapeDecoration(
-                          color: const Color(0xFF6750A4) /* Schemes-Primary */,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(100),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                spacing: 8,
-                                children: [
-                                  Container(
-                                    width: 20,
-                                    height: 20,
-                                    clipBehavior: Clip.antiAlias,
-                                    decoration: BoxDecoration(),
-                                    child: Stack(),
-                                  ),
-                                  Text(
-                                    'Test',
-                                    style: TextStyle(
-                                      color: Colors.white /* Schemes-On-Primary */,
-                                      fontSize: 14,
-                                      fontFamily: 'Roboto',
-                                      fontWeight: FontWeight.w500,
-                                      height: 1.43,
-                                      letterSpacing: 0.10,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 90,
-                top: 370,
-                child: Container(
-                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(0.16),
-                  width: 100.28,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 1,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ],
+      home: Scaffold(body: ListView(children: [HomePage()])),
     );
   }
 }
