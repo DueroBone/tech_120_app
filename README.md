@@ -4,6 +4,8 @@ A new Flutter project.
 
 ## Getting Started
 
+All of the main code is in the lib folder. The backend server's code is in the convieniently named backend folder.
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
