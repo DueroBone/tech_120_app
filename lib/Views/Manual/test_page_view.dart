@@ -10,7 +10,9 @@ class TestPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Tech 120 Test Page')),
-      body: Iphone161(),
+      body: Center(
+        child: Iphone161(),
+      ), // Centers the generated content because it does not perfectly fill the screen
     );
   }
 }

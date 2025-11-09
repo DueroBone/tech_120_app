@@ -18,7 +18,7 @@ class HomePageView extends StatelessWidget {
             MaterialPageRoute(builder: (context) => const TestPageView()),
           );
         },
-        child: const Text('Go to Test Page'),
+        child: const Text('Go to Test Page'), // What is in the button
       ),
     );
   }

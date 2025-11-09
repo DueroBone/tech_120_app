@@ -12,8 +12,11 @@ class FigmaToCodeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData.dark().copyWith(
-        scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: const Color.fromARGB(255, 0, 0, 0),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color.fromARGB(255, 64, 128, 196),
+        ),
       ),
       home: HomePageView(),
     );
