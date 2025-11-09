@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'; // DO NOT DELETE, delete/replace everything below from Figma
 
 class Iphone161 extends StatelessWidget {
   @override
@@ -7,7 +7,7 @@ class Iphone161 extends StatelessWidget {
       children: [
         Container(
           width: 393,
-          height: 852,
+          height: 756,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Colors.white),
           child: Stack(
@@ -131,6 +131,30 @@ class Iphone161 extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 39,
+                top: 601,
+                child: Container(
+                  width: 129,
+                  height: 129,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: OvalBorder(),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 214,
+                top: 571,
+                child: Container(
+                  width: 141,
+                  height: 59,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: OvalBorder(),
                   ),
                 ),
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_120_app/Views/Manual/home_page.dart';
+import 'package:tech_120_app/Views/Manual/home_page_view.dart';
 
 void main() {
   runApp(const FigmaToCodeApp());
@@ -15,7 +15,7 @@ class FigmaToCodeApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: const Color.fromARGB(255, 18, 32, 47),
       ),
-      home: Scaffold(body: ListView(children: [HomePage()])),
+      home: HomePageView(),
     );
   }
 }
