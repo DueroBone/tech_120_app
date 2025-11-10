@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Views/Manual/smaller_view.dart';
 import 'package:tech_120_app/Views/fullscreen.dart';
 import 'package:tech_120_app/Views/Manual/test_page_view.dart';
 import 'package:tech_120_app/Views/Manual/chat_view.dart';
@@ -43,6 +44,16 @@ class HomePageView extends StatelessWidget {
               print("Going to Sign Up Page");
             },
             child: const Text('Sign Up Page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SmallerView()),
+              );
+              print("Going to Smaller View");
+            },
+            child: const Text('Smaller View'),
           ),
         ],
       ),
