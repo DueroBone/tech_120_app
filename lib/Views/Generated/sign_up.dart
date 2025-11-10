@@ -125,27 +125,24 @@ class Signup extends StatelessWidget {
               ),
               Positioned(
                 left: 137,
-                top: 52,
-                child: SizedBox(
-                  width: 120,
-                  height: 38,
-                  child: Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(0, 4),
-                          blurRadius: 4,
-                          color: Color(0xFF000000).withOpacity(0.25),
-                        ),
-                      ],
-                    ),
+                top: 61,
+                child: Text(
+                  'Sign Up',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xFF81CBF3),
+                    fontSize: 32,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w500,
+                    height: 0.62,
+                    letterSpacing: 0.10,
+                    shadows: [
+                      Shadow(
+                        offset: Offset(0, 4),
+                        blurRadius: 4,
+                        color: Color(0xFF000000).withOpacity(0.25),
+                      ),
+                    ],
                   ),
                 ),
               ),

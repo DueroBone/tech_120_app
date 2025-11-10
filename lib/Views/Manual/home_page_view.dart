@@ -40,6 +40,7 @@ class HomePageView extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) => const SignUpView()),
               );
+              print("Going to Sign Up Page");
             },
             child: const Text('Sign Up Page'),
           ),
