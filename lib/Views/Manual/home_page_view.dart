@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Views/fullscreen.dart';
 import 'package:tech_120_app/Views/Manual/test_page_view.dart';
 import 'package:tech_120_app/Views/Manual/chat_view.dart';
+import 'package:tech_120_app/Views/Manual/sign_up_view.dart';
 
 class HomePageView extends StatelessWidget {
   const HomePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // Scaffold enlarges to fit the screen and provides structure
-      appBar: AppBar(title: const Text('Tech 120 Root')), // Top bar with title
-      body: Column(
+    return MakeFullscreen(
+      title: "Tech 120 App",
+      child: Column(
         children: [
           ElevatedButton(
             // Button labeled 'Go to Test Page'
@@ -32,6 +33,15 @@ class HomePageView extends StatelessWidget {
               );
             },
             child: const Text('Go to Chat Page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SignUpView()),
+              );
+            },
+            child: const Text('Sign Up Page'),
           ),
         ],
       ),
