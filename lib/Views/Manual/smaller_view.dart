@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_120_app/Views/Generated/smaller.dart';
-import 'package:tech_120_app/Views/fullscreen.dart';
+import 'package:tech_120_app/Views/make_fullscreen.dart';
 
 class SmallerView extends StatelessWidget {
   const SmallerView({super.key});

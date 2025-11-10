@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_120_app/Views/Generated/test_page.dart';
-import 'package:tech_120_app/Views/fullscreen.dart';
+import 'package:tech_120_app/Views/make_fullscreen.dart';
 
 // Basically just renames Iphone161 to TestPageView for clarity
 // This process is called wrapping
