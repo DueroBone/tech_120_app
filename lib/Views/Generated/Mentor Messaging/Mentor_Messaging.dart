@@ -73,7 +73,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
       children: [
         Container(
           width: 420,
-          height: 666,
+          height: 750,
           clipBehavior: Clip.antiAlias,
           decoration: ShapeDecoration(
             gradient: LinearGradient(
@@ -95,7 +95,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
             children: [
               Positioned(
                 left: 0,
-                top: 553,
+                top: 630,
                 child: Container(
                   width: 438,
                   height: 117,
@@ -115,7 +115,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 438,
+                          width: 410,
                           height: 117,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFD9D9D9),
@@ -133,7 +133,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
               // Message input + send button
               Positioned(
                 left: 16,
-                top: 576,
+                top: 660,
                 child: Container(
                   width: 380,
                   height: 58,
