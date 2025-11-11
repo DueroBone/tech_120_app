@@ -15,7 +15,7 @@ class HomePageView extends StatelessWidget {
 
     return MakeFullscreen(
       title: "Tech 120 App",
-      child: ListView(
+      child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
