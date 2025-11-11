@@ -9,12 +9,30 @@ class Signup extends StatelessWidget {
           width: 393,
           height: 756,
           clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(color: const Color(0xFFCFB991)),
+          decoration: ShapeDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.50, -0.00),
+              end: Alignment(0.50, 1.00),
+              colors: [const Color(0xFF253067), const Color(0xFF8A4EBC)],
+            ),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 1),
+              borderRadius: BorderRadius.circular(45),
+            ),
+            shadows: [
+              BoxShadow(
+                color: Color(0x3F000000),
+                blurRadius: 8,
+                offset: Offset(0, 4),
+                spreadRadius: 0,
+              ),
+            ],
+          ),
           child: Stack(
             children: [
               Positioned(
                 left: 16,
-                top: 387,
+                top: 365,
                 child: Container(
                   width: 362,
                   height: 48,
@@ -51,7 +69,155 @@ class Signup extends StatelessWidget {
               ),
               Positioned(
                 left: 16,
-                top: 487,
+                top: 365,
+                child: Container(
+                  width: 362,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 362,
+                          height: 48,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 449,
+                child: Container(
+                  width: 362,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 362,
+                          height: 48,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 449,
+                child: Container(
+                  width: 362,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 362,
+                          height: 48,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 529,
+                child: Container(
+                  width: 362,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 362,
+                          height: 48,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 529,
                 child: Container(
                   width: 362,
                   height: 48,
@@ -124,17 +290,77 @@ class Signup extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 137,
-                top: 61,
+                left: 16,
+                top: 288,
+                child: Container(
+                  width: 362,
+                  height: 48,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 362,
+                          height: 48,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 107,
+                top: 81,
                 child: Text(
                   'Sign Up',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: const Color(0xFF81CBF3),
-                    fontSize: 32,
+                    fontSize: 48,
                     fontFamily: 'Inter',
                     fontWeight: FontWeight.w500,
-                    height: 0.62,
+                    height: 0.42,
+                    letterSpacing: 0.10,
+                    shadows: [
+                      Shadow(
+                        offset: Offset(0, 4),
+                        blurRadius: 4,
+                        color: Color(0xFF000000).withOpacity(0.25),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 107,
+                top: 81,
+                child: Text(
+                  'Sign Up',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: const Color(0xFF81CBF3),
+                    fontSize: 48,
+                    fontFamily: 'Inter',
+                    fontWeight: FontWeight.w500,
+                    height: 0.42,
                     letterSpacing: 0.10,
                     shadows: [
                       Shadow(
@@ -175,6 +401,32 @@ class Signup extends StatelessWidget {
                 ),
               ),
               Positioned(
+                left: 136,
+                top: 137,
+                child: Container(
+                  width: 122,
+                  height: 122,
+                  decoration: ShapeDecoration(
+                    image: DecorationImage(
+                      image: NetworkImage("https://placehold.co/122x122"),
+                      fit: BoxFit.cover,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 1),
+                      borderRadius: BorderRadius.circular(61),
+                    ),
+                    shadows: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
                 left: 35,
                 top: 302,
                 child: SizedBox(
@@ -194,7 +446,25 @@ class Signup extends StatelessWidget {
               ),
               Positioned(
                 left: 35,
-                top: 401,
+                top: 302,
+                child: SizedBox(
+                  width: 112,
+                  child: Text(
+                    'Name:',
+                    style: TextStyle(
+                      color: const Color(0xFF81CBF3),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 35,
+                top: 462,
                 child: SizedBox(
                   width: 112,
                   child: Text(
@@ -212,13 +482,251 @@ class Signup extends StatelessWidget {
               ),
               Positioned(
                 left: 35,
-                top: 501,
+                top: 462,
+                child: SizedBox(
+                  width: 112,
+                  child: Text(
+                    'Email:',
+                    style: TextStyle(
+                      color: const Color(0xFF81CBF3),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 35,
+                top: 540,
+                child: SizedBox(
+                  width: 198,
+                  height: 26,
+                  child: Text(
+                    'Password:',
+                    style: TextStyle(
+                      color: const Color(0xFF81CBF3),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 35,
+                top: 540,
+                child: SizedBox(
+                  width: 198,
+                  height: 26,
+                  child: Text(
+                    'Password:',
+                    style: TextStyle(
+                      color: const Color(0xFF81CBF3),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 37,
+                top: 379,
                 child: SizedBox(
                   width: 112,
                   child: Text(
                     'Major:',
                     style: TextStyle(
                       color: const Color(0xFF81CBF3),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 37,
+                top: 379,
+                child: SizedBox(
+                  width: 112,
+                  child: Text(
+                    'Major:',
+                    style: TextStyle(
+                      color: const Color(0xFF81CBF3),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 9,
+                top: 722,
+                child: Container(
+                  width: 375,
+                  height: 34,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 121,
+                        top: 21,
+                        child: Container(
+                          width: 134,
+                          height: 5,
+                          decoration: ShapeDecoration(
+                            color: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 9,
+                top: 722,
+                child: Container(
+                  width: 375,
+                  height: 34,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 121,
+                        top: 21,
+                        child: Container(
+                          width: 134,
+                          height: 5,
+                          decoration: ShapeDecoration(
+                            color: Colors.black,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 93,
+                top: 605,
+                child: Container(
+                  width: 207,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 207,
+                          height: 90,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 93,
+                top: 605,
+                child: Container(
+                  width: 207,
+                  height: 90,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      ),
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 207,
+                          height: 90,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 132,
+                top: 624,
+                child: SizedBox(
+                  width: 130,
+                  height: 52,
+                  child: Text(
+                    'Sign Up!',
+                    style: TextStyle(
+                      color: const Color(0xFFD9D9D9),
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 132,
+                top: 624,
+                child: SizedBox(
+                  width: 130,
+                  height: 52,
+                  child: Text(
+                    'Sign Up!',
+                    style: TextStyle(
+                      color: const Color(0xFFD9D9D9),
                       fontSize: 32,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
