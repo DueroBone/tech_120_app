@@ -7,7 +7,7 @@ class Iphone161 extends StatelessWidget {
       children: [
         Container(
           width: 393,
-          height: 756,
+          height: 856,
           clipBehavior: Clip.antiAlias,
           decoration: BoxDecoration(color: Colors.white),
           child: Stack(
@@ -48,7 +48,7 @@ class Iphone161 extends StatelessWidget {
                               left: 46,
                               top: 54,
                               child: Text(
-                                'Hola\n',
+                                'Hello\n',
                                 style: TextStyle(
                                   color: Colors.black,
                                   fontSize: 12,
