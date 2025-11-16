@@ -1,0 +1,125 @@
+import "package:flutter/material.dart";
+
+class MenuPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 393,
+          height: 756,
+          clipBehavior: Clip.antiAlias,
+          decoration: ShapeDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.50, -0.00),
+              end: Alignment(0.50, 1.00),
+              colors: [const Color(0xFF253067), const Color(0xFF8A4EBC)],
+            ),
+            shape: RoundedRectangleBorder(side: BorderSide(width: 1)),
+            shadows: [
+              BoxShadow(
+                color: Color(0x3F000000),
+                blurRadius: 8,
+                offset: Offset(0, 4),
+                spreadRadius: 0,
+              )
+            ],
+          ),
+          child: Stack(
+            children: [
+              Positioned(
+                left: -6,
+                top: 681,
+                child: Container(
+                  width: 402,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        width: 5,
+                        strokeAlign: BorderSide.strokeAlignCenter,
+                        color: const Color(0xFF81CBF3),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: -19,
+                top: 0,
+                child: Container(
+                  width: 460,
+                  height: 681,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 460,
+                          height: 681,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 14,
+                top: 66,
+                child: Container(
+                  width: 364,
+                  height: 46,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 364,
+                          height: 46,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 37,
+                top: 70,
+                child: SizedBox(
+                  width: 163,
+                  height: 37,
+                  child: Text(
+                    'Sign out',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
