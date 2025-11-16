@@ -19,7 +19,8 @@ class LocalStorage2 {
 class ExampleLocalStorage {
   // ---- Singleton instance ----
   ExampleLocalStorage._privateConstructor();
-  static final ExampleLocalStorage instance = ExampleLocalStorage._privateConstructor();
+  static final ExampleLocalStorage instance =
+      ExampleLocalStorage._privateConstructor();
 
   // ---- Database reference ----
   Database? _db;

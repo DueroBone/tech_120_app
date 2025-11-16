@@ -6,9 +6,13 @@ class AuthToken {
   AuthToken(this.token);
 }
 
-bool isIsAuthenticated(AuthToken authToken) {
-  // TODO: Placeholder for actual authentication logic
+bool isIsAuthenticated(AuthToken? authToken) {
   return true;
+}
+
+AuthToken? getAuthToken() {
+  LocalStorage2 storage = LocalStorage2();
+  return storage.getAuthTokenFromStorage();
 }
 
 class AuthenticationMiddleware {}
