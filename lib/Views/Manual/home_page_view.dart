@@ -6,6 +6,7 @@ import 'package:tech_120_app/Views/Manual/test_page_test_view.dart';
 import 'package:tech_120_app/Views/Manual/chat_view.dart';
 import 'package:tech_120_app/Views/Manual/sign_up_view.dart';
 import 'package:tech_120_app/Views/Manual/mentor_match_view.dart';
+import 'package:tech_120_app/Views/Manual/Mentor/mentor_profile.dart';
 
 class HomePageView extends StatelessWidget {
   const HomePageView({super.key});
@@ -111,6 +112,17 @@ class HomePageView extends StatelessWidget {
               );
             },
             child: const Text('Go to Mentor match Page'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const MentorProfileView(),
+                ),
+              );
+            },
+            child: const Text('Go to Mentor Profile'),
           ),
         ],
       ),
