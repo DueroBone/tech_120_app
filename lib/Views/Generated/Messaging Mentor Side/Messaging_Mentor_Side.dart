@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MessagingStudentSide extends StatelessWidget {
+class MessagingMentorSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -125,7 +125,7 @@ class MessagingStudentSide extends StatelessWidget {
                   width: 366,
                   height: 38,
                   child: Text(
-                    'Mentor 1',
+                    'Student 1',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -284,8 +284,8 @@ class MessagingStudentSide extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 79,
-                top: 113,
+                left: 72,
+                top: 110,
                 child: Container(
                   transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(3.14),
                   width: 54,
