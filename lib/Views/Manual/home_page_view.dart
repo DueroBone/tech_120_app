@@ -118,7 +118,7 @@ class HomePageView extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const MentorProfileView(),
+                  builder: (context) => const MentorMessagingView(),
                 ),
               );
             },
