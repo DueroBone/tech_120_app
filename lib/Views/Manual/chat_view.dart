@@ -15,7 +15,7 @@ class ChatView extends StatelessWidget {
             width: 393,
             height: 756,
             clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: BoxDecoration(color: const Color.fromARGB(255, 255, 255, 255)),
             child: Column(
               children: [
                 Padding(
