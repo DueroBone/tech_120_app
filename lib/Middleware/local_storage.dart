@@ -92,4 +92,9 @@ class LocalMessageStore {
       return <dynamic>[];
     }
   }
+
+  Map<String, dynamic>? getCurrentUserFromStorage() {
+    // For now, return null as no local storage is implemented.
+    return null;
+  }
 }

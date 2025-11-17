@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:tech_120_app/Middleware/authentication.dart';
 import 'package:tech_120_app/Middleware/local_storage.dart';
+import 'package:tech_120_app/Middleware/current_user.dart';
+import 'package:tech_120_app/Middleware/models/user.dart';
 
 class Message {
   final bool isText;
@@ -41,17 +43,7 @@ class Message {
   }
 }
 
-class User {
-  final String id;
-  final String name;
-  final Image? avatar;
-
-  User(this.id, this.name, this.avatar);
-
-  factory User.fromJson(Map<String, dynamic> json) {
-    return User(json['id'] as String, json['name'] as String, null);
-  }
-}
+// `User` moved to `lib/Middleware/models/user.dart`.
 
 Future<List<Message>> fetchMessages(
   AuthToken authToken,
@@ -94,4 +86,8 @@ Future<List<User>> fetchAllUsers(AuthToken authToken) async {
   } catch (e) {
     return [];
   }
+}
+
+User? getCurrentUser() {
+  return currentUserStore.user;
 }
