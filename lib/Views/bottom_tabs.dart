@@ -143,7 +143,7 @@ class _BottomTabsState extends State<BottomTabs> {
                       2,
                       (context) => MakeFullscreen(
                         title: 'Profile',
-                        child: MentorMessages(),
+                        child: MessagingStudentSide(),
                       ),
                     ),
                   ],

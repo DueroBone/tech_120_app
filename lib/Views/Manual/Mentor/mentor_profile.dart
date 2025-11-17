@@ -7,6 +7,6 @@ class MentorMessagingView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MakeFullscreen(title: "Messages", child: MentorMessages());
+    return MakeFullscreen(title: "Messages", child: MessagingStudentSide());
   }
 }
