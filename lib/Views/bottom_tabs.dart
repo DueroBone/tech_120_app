@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_120_app/Views/Manual/home_page_view.dart';
 import 'package:tech_120_app/Views/Manual/chat_view.dart';
-import 'package:tech_120_app/Views/Generated/Mentor Messaging/Mentor_Messaging.dart';
+import 'package:tech_120_app/Views/Generated/S-Student%20Profile/Student_profile.dart';
 import 'package:tech_120_app/Views/tabs_controller.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
 
@@ -143,7 +143,7 @@ class _BottomTabsState extends State<BottomTabs> {
                       2,
                       (context) => MakeFullscreen(
                         title: 'Profile',
-                        child: MessagingStudentSide(),
+                        child: ProfilePage(),
                       ),
                     ),
                   ],
