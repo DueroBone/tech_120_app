@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-class StudentProfileStudentSide extends StatelessWidget {
+class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -77,27 +77,6 @@ class StudentProfileStudentSide extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 12,
-                top: 66,
-                child: SizedBox(
-                  width: 368,
-                  height: 94,
-                  child: Text(
-                    'Student 1 \n\n\nProfile',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 48,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.42,
-                      letterSpacing: 0.50,
-                      shadows: [Shadow(offset: Offset(0, 4), blurRadius: 4, color: Color(0xFF000000).withOpacity(0.25))],
-                    ),
                   ),
                 ),
               ),

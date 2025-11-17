@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart'; // Where flutter finds what makes the app
-
-class StudentMessagesHomeButton extends StatelessWidget {
+class MessagingStudentSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,19 +27,19 @@ class StudentMessagesHomeButton extends StatelessWidget {
           child: Stack(
             children: [
               Positioned(
-                left: 105,
-                top: 209,
+                left: -17,
+                top: 0,
                 child: Container(
-                  width: 256,
-                  height: 49,
+                  width: 434,
+                  height: 123,
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 256,
-                          height: 49,
+                          width: 434,
+                          height: 123,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFD9D9D9),
                             shape: RoundedRectangleBorder(
@@ -51,470 +50,228 @@ class StudentMessagesHomeButton extends StatelessWidget {
                         ),
                       ),
                     ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 105,
-                top: 410,
-                child: Container(
-                  width: 256,
-                  height: 49,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 256,
-                          height: 49,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 109,
-                top: 512,
-                child: Container(
-                  width: 256,
-                  height: 49,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 256,
-                          height: 49,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 109,
-                top: 609,
-                child: Container(
-                  width: 256,
-                  height: 49,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 256,
-                          height: 49,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 103,
-                top: 306,
-                child: Container(
-                  width: 256,
-                  height: 49,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 256,
-                          height: 49,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: -15,
-                top: 129,
-                child: Container(
-                  width: 429,
-                  height: 43,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 429,
-                          height: 43,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 45,
-                top: 136,
-                child: Container(
-                  width: 343,
-                  height: 30,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 343,
-                          height: 30,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFFDF4F4),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 100,
-                top: 81,
-                child: Text(
-                  'Messages',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color(0xFF81CBF3),
-                    fontSize: 40,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                    height: 0.50,
-                    letterSpacing: 0.10,
-                    shadows: [Shadow(offset: Offset(0, 4), blurRadius: 4, color: Color(0xFF000000).withOpacity(0.25))],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 17,
-                top: 293,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 17,
-                top: 396,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 17,
-                top: 499,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 17,
-                top: 596,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 17,
-                top: 196,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 128,
-                top: 215,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Mentor 1',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 128,
-                top: 416,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Mentor 3',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 132,
-                top: 518,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Mentor 4',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 132,
-                top: 615,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Mentor 5',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 126,
-                top: 312,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Mentor 2',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: -2,
-                top: 681,
-                child: Container(
-                  width: 399,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 1,
-                top: 122,
-                child: Container(
-                  width: 393,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 2,
-                top: 184,
-                child: Container(
-                  width: 393,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
-                      ),
-                    ),
                   ),
                 ),
               ),
               Positioned(
                 left: -21,
-                top: 138,
+                top: 653,
                 child: Container(
-                  width: 90,
-                  height: 24,
+                  width: 438,
+                  height: 117,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 438,
+                          height: 117,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 676,
+                child: Container(
+                  width: 298,
+                  height: 58,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 298,
+                          height: 58,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 44,
+                top: 690,
+                child: SizedBox(
+                  width: 173.15,
+                  height: 30.21,
+                  child: Text(
+                    'Message',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 298,
+                top: 750.24,
+                child: Opacity(
+                  opacity: 0.90,
+                  child: Container(
+                    transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(-1.57),
+                    width: 74.24,
+                    height: 95,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage("https://placehold.co/74x95"),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 172,
+                top: 147,
+                child: Container(
+                  width: 213,
+                  height: 56,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 213,
+                          height: 56,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 9,
+                top: 215,
+                child: Container(
+                  width: 213,
+                  height: 87,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 213,
+                          height: 87,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 165,
+                top: 313,
+                child: Container(
+                  width: 220,
+                  height: 128,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 220,
+                          height: 128,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 9,
+                top: 453,
+                child: Container(
+                  width: 201,
+                  height: 51,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 201,
+                          height: 51,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 79,
+                top: 113,
+                child: Container(
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(3.14),
+                  width: 54,
+                  height: 60,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/90x24"),
+                      image: NetworkImage("https://placehold.co/54x60"),
                       fit: BoxFit.contain,
                     ),
                   ),

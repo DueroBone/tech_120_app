@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-class MentorMessages extends StatelessWidget {
+class MessagingStudentSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,19 +27,19 @@ class MentorMessages extends StatelessWidget {
           child: Stack(
             children: [
               Positioned(
-                left: 104,
-                top: 209,
+                left: -17,
+                top: 0,
                 child: Container(
-                  width: 256,
-                  height: 49,
+                  width: 434,
+                  height: 123,
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 256,
-                          height: 49,
+                          width: 434,
+                          height: 123,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFD9D9D9),
                             shape: RoundedRectangleBorder(
@@ -55,19 +54,29 @@ class MentorMessages extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 104,
-                top: 410,
+                left: -21,
+                top: 653,
                 child: Container(
-                  width: 256,
-                  height: 49,
+                  width: 438,
+                  height: 117,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0x3F000000),
+                        blurRadius: 4,
+                        offset: Offset(0, 4),
+                        spreadRadius: 0,
+                      )
+                    ],
+                  ),
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 256,
-                          height: 49,
+                          width: 438,
+                          height: 117,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFD9D9D9),
                             shape: RoundedRectangleBorder(
@@ -82,102 +91,21 @@ class MentorMessages extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 108,
-                top: 512,
+                left: 16,
+                top: 676,
                 child: Container(
-                  width: 256,
-                  height: 49,
+                  width: 298,
+                  height: 58,
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 256,
-                          height: 49,
+                          width: 298,
+                          height: 58,
                           decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 108,
-                top: 609,
-                child: Container(
-                  width: 256,
-                  height: 49,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 256,
-                          height: 49,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 102,
-                top: 306,
-                child: Container(
-                  width: 256,
-                  height: 49,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 256,
-                          height: 49,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: -16,
-                top: 129,
-                child: Container(
-                  width: 429,
-                  height: 43,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 429,
-                          height: 43,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
+                            color: const Color(0xFF81CBF3),
                             shape: RoundedRectangleBorder(
                               side: BorderSide(width: 3),
                               borderRadius: BorderRadius.circular(20),
@@ -191,20 +119,57 @@ class MentorMessages extends StatelessWidget {
               ),
               Positioned(
                 left: 44,
-                top: 136,
+                top: 690,
+                child: SizedBox(
+                  width: 173.15,
+                  height: 30.21,
+                  child: Text(
+                    'Message',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 298,
+                top: 750.24,
+                child: Opacity(
+                  opacity: 0.90,
+                  child: Container(
+                    transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(-1.57),
+                    width: 74.24,
+                    height: 95,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage("https://placehold.co/74x95"),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 172,
+                top: 147,
                 child: Container(
-                  width: 343,
-                  height: 30,
+                  width: 213,
+                  height: 56,
                   child: Stack(
                     children: [
                       Positioned(
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 343,
-                          height: 30,
+                          width: 213,
+                          height: 56,
                           decoration: ShapeDecoration(
-                            color: const Color(0xFFFDF4F4),
+                            color: const Color(0xFF81CBF3),
                             shape: RoundedRectangleBorder(
                               side: BorderSide(width: 3),
                               borderRadius: BorderRadius.circular(20),
@@ -217,304 +182,96 @@ class MentorMessages extends StatelessWidget {
                 ),
               ),
               Positioned(
-                left: 99,
-                top: 81,
-                child: Text(
-                  'Messages',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: const Color(0xFF81CBF3),
-                    fontSize: 40,
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                    height: 0.50,
-                    letterSpacing: 0.10,
-                    shadows: [Shadow(offset: Offset(0, 4), blurRadius: 4, color: Color(0xFF000000).withOpacity(0.25))],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 293,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 396,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 499,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 596,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 196,
-                child: Container(
-                  width: 75,
-                  height: 75,
-                  decoration: ShapeDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/75x75"),
-                      fit: BoxFit.cover,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1),
-                      borderRadius: BorderRadius.circular(61),
-                    ),
-                    shadows: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 127,
+                left: 9,
                 top: 215,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Student 1',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 127,
-                top: 416,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Student 3',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 131,
-                top: 518,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Student 4',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 131,
-                top: 615,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Student 5',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 125,
-                top: 312,
-                child: SizedBox(
-                  width: 163,
-                  height: 37,
-                  child: Text(
-                    'Student 2',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 3,
-                top: 681,
                 child: Container(
-                  width: 393,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
+                  width: 213,
+                  height: 87,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 213,
+                          height: 87,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
               Positioned(
-                left: 0,
-                top: 122,
+                left: 165,
+                top: 313,
                 child: Container(
-                  width: 393,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
+                  width: 220,
+                  height: 128,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 220,
+                          height: 128,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFF81CBF3),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
               Positioned(
-                left: 1,
-                top: 184,
+                left: 9,
+                top: 453,
                 child: Container(
-                  width: 393,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
+                  width: 201,
+                  height: 51,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        left: 0,
+                        top: 0,
+                        child: Container(
+                          width: 201,
+                          height: 51,
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFD9D9D9),
+                            shape: RoundedRectangleBorder(
+                              side: BorderSide(width: 3),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
               Positioned(
-                left: -22,
-                top: 138,
+                left: 79,
+                top: 113,
                 child: Container(
-                  width: 90,
-                  height: 24,
+                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(3.14),
+                  width: 54,
+                  height: 60,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/90x24"),
+                      image: NetworkImage("https://placehold.co/54x60"),
                       fit: BoxFit.contain,
                     ),
                   ),
