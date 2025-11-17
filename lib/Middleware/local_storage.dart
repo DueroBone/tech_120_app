@@ -1,7 +1,10 @@
 import "package:tech_120_app/Middleware/authentication.dart";
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:tech_120_app/Middleware/networking.dart';
+
+// Note: Local storage wrapper for messages/users. Currently these methods
+// forward to the networking layer (no real local DB) so messaging code can
+// be switched to use local storage later without changing public APIs.
 
 class LocalStorage2 {
   // Uses Flutter's SharedPreferences to persist a single short token string.
@@ -39,103 +42,54 @@ class LocalStorage2 {
       // Handle error if needed
     }
   }
-
-  // If you later want to switch to a full local DB, see ExampleLocalStorage below.
 }
 
-class ExampleLocalStorage {
-  // ---- Singleton instance ----
-  ExampleLocalStorage._privateConstructor();
-  static final ExampleLocalStorage instance =
-      ExampleLocalStorage._privateConstructor();
+class LocalMessageStore {
+  final NetworkingService _networking = NetworkingService();
 
-  // ---- Database reference ----
-  Database? _db;
-
-  // ---- Initialize database ----
-  Future<Database> get database async {
-    if (_db != null) return _db!;
-
-    _db = await _initDatabase();
-    return _db!;
-  }
-
-  Future<Database> _initDatabase() async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, 'app_storage.db');
-
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: (db, version) async {
-        await db.execute('''
-          CREATE TABLE users (
-            id TEXT PRIMARY KEY,
-            name TEXT,
-            avatar TEXT
-          );
-        ''');
-
-        await db.execute('''
-          CREATE TABLE messages (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            senderId TEXT,
-            receiverId TEXT,
-            content TEXT,
-            timestamp INTEGER
-          );
-        ''');
-      },
-    );
-  }
-
-  // ---- Example API methods ----
-
-  Future<void> saveUser(String id, String name, String avatar) async {
-    final db = await database;
-    await db.insert('users', {
-      'id': id,
-      'name': name,
-      'avatar': avatar,
-    }, conflictAlgorithm: ConflictAlgorithm.replace);
-  }
-
-  Future<Map<String, dynamic>?> getUser(String id) async {
-    final db = await database;
-
-    final result = await db.query('users', where: 'id = ?', whereArgs: [id]);
-
-    if (result.isEmpty) return null;
-    return result.first;
-  }
-
-  Future<void> saveMessage(
-    String sender,
-    String receiver,
-    String content,
+  // Return raw list JSON for messages for the given other user.
+  Future<List<dynamic>> fetchMessagesFromStorage(
+    AuthToken authToken,
+    String otherUserId,
   ) async {
-    final db = await database;
-
-    await db.insert('messages', {
-      'senderId': sender,
-      'receiverId': receiver,
-      'content': content,
-      'timestamp': DateTime.now().millisecondsSinceEpoch,
-    });
+    try {
+      final response = await _networking.getList(
+        '/messages/$otherUserId',
+        headers: {'Authorization': 'Bearer ${authToken.token}'},
+      );
+      return response;
+    } catch (e) {
+      return <dynamic>[];
+    }
   }
 
-  Future<List<Map<String, dynamic>>> getMessages(
-    String userA,
-    String userB,
+  // Send message JSON to server (for now forwards to networking).
+  Future<bool> sendMessageToServer(
+    AuthToken authToken,
+    Map<String, dynamic> messageJson,
   ) async {
-    final db = await database;
+    try {
+      await _networking.post(
+        '/messages',
+        headers: {'Authorization': 'Bearer ${authToken.token}'},
+        body: messageJson,
+      );
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
 
-    return await db.query(
-      'messages',
-      where:
-          '(senderId = ? AND receiverId = ?) OR (senderId = ? AND receiverId = ?)',
-      whereArgs: [userA, userB, userB, userA],
-      orderBy: 'timestamp ASC',
-    );
+  // Return raw list JSON for users.
+  Future<List<dynamic>> fetchAllUsersFromStorage(AuthToken authToken) async {
+    try {
+      final response = await _networking.getList(
+        '/users',
+        headers: {'Authorization': 'Bearer ${authToken.token}'},
+      );
+      return response;
+    } catch (e) {
+      return <dynamic>[];
+    }
   }
 }

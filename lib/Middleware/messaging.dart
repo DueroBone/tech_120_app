@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:tech_120_app/Middleware/authentication.dart';
-import 'package:tech_120_app/Middleware/networking.dart';
+import 'package:tech_120_app/Middleware/local_storage.dart';
 
 class Message {
   final bool isText;
@@ -49,11 +49,7 @@ class User {
   User(this.id, this.name, this.avatar);
 
   factory User.fromJson(Map<String, dynamic> json) {
-    return User(
-      json['id'] as String,
-      json['name'] as String,
-      null,
-    );
+    return User(json['id'] as String, json['name'] as String, null);
   }
 }
 
@@ -61,13 +57,15 @@ Future<List<Message>> fetchMessages(
   AuthToken authToken,
   String otherUserId,
 ) async {
-  final networking = NetworkingService();
+  final localStore = LocalMessageStore();
   try {
-    final response = await networking.getList(
-      '/messages/$otherUserId',
-      headers: {'Authorization': 'Bearer ${authToken.token}'},
+    final response = await localStore.fetchMessagesFromStorage(
+      authToken,
+      otherUserId,
     );
-    return response.map((json) => Message.fromJson(json as Map<String, dynamic>)).toList();
+    return response
+        .map((json) => Message.fromJson(json as Map<String, dynamic>))
+        .toList();
   } catch (e) {
     return [];
   }
@@ -78,27 +76,21 @@ Future<bool> sendMessage(
   String receiverId,
   Message message,
 ) async {
-  final networking = NetworkingService();
+  final localStore = LocalMessageStore();
   try {
-    await networking.post(
-      '/messages',
-      headers: {'Authorization': 'Bearer ${authToken.token}'},
-      body: message.toJson(),
-    );
-    return true;
+    return await localStore.sendMessageToServer(authToken, message.toJson());
   } catch (e) {
     return false;
   }
 }
 
 Future<List<User>> fetchAllUsers(AuthToken authToken) async {
-  final networking = NetworkingService();
+  final localStore = LocalMessageStore();
   try {
-    final response = await networking.getList(
-      '/users',
-      headers: {'Authorization': 'Bearer ${authToken.token}'},
-    );
-    return response.map((json) => User.fromJson(json as Map<String, dynamic>)).toList();
+    final response = await localStore.fetchAllUsersFromStorage(authToken);
+    return response
+        .map((json) => User.fromJson(json as Map<String, dynamic>))
+        .toList();
   } catch (e) {
     return [];
   }
