@@ -1,19 +1,61 @@
 import "package:tech_120_app/Middleware/authentication.dart";
+import "package:tech_120_app/Middleware/networking.dart";
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class LocalStorage2 {
-  AuthToken? getAuthTokenFromStorage() {
-    // TODO
+  final NetworkingService _networking = NetworkingService();
+
+  // Wrapper for networking - gets auth token from API
+  Future<AuthToken?> getAuthTokenFromStorage() async {
+    try {
+      final response = await _networking.get('/auth/token');
+      if (response['token'] != null) {
+        return AuthToken(response['token'] as String);
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
   }
 
-  void saveAuthTokenToStorage(AuthToken authToken) {
-    // TODO
+  // Wrapper for networking - saves auth token to API
+  Future<void> saveAuthTokenToStorage(AuthToken authToken) async {
+    try {
+      await _networking.post('/auth/token', body: {
+        'token': authToken.token,
+      });
+    } catch (e) {
+      // Handle error if needed
+    }
   }
 
-  void clearAuthTokenFromStorage() {
-    // TODO
+  // Wrapper for networking - clears auth token from API
+  Future<void> clearAuthTokenFromStorage() async {
+    try {
+      await _networking.delete('/auth/token');
+    } catch (e) {
+      // Handle error if needed
+    }
   }
+
+  // Future method for local database implementation
+  // To use local database instead of networking:
+  // 1. Uncomment and implement these methods using sqflite
+  // 2. Update the public methods above to call these instead of networking
+  
+  // Future<AuthToken?> _getAuthTokenFromLocalDb() async {
+  //   // Implementation using sqflite
+  //   return null;
+  // }
+  
+  // Future<void> _saveAuthTokenToLocalDb(AuthToken authToken) async {
+  //   // Implementation using sqflite
+  // }
+  
+  // Future<void> _clearAuthTokenFromLocalDb() async {
+  //   // Implementation using sqflite
+  // }
 }
 
 class ExampleLocalStorage {

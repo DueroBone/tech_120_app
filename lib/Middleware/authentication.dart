@@ -7,12 +7,12 @@ class AuthToken {
 }
 
 bool isIsAuthenticated(AuthToken? authToken) {
-  return true;
+  return authToken != null && authToken.token.isNotEmpty;
 }
 
-AuthToken? getAuthToken() {
+Future<AuthToken?> getAuthToken() async {
   LocalStorage2 storage = LocalStorage2();
-  return storage.getAuthTokenFromStorage();
+  return await storage.getAuthTokenFromStorage();
 }
 
 class AuthenticationMiddleware {}
