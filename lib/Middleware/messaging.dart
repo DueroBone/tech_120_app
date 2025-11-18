@@ -9,15 +9,15 @@ class Message {
   final String? text;
   final Image? image;
   final DateTime timestamp;
-  final String senderId;
-  final String receiverId;
+  final User sender;
+  final User receiver;
 
   Message(
     this.isText,
     this.text,
     this.image,
-    this.senderId,
-    this.receiverId,
+    this.sender,
+    this.receiver,
     this.timestamp,
   );
 
@@ -25,20 +25,20 @@ class Message {
     return {
       'isText': isText,
       'text': text,
-      'senderId': senderId,
-      'receiverId': receiverId,
+      'senderId': sender,
+      'receiverId': receiver,
       'timestamp': timestamp.toIso8601String(),
     };
   }
 
-  factory Message.fromJson(Map<String, dynamic> json) {
-    return Message(
-      json['isText'] as bool,
-      json['text'] as String?,
-      null,
-      json['senderId'] as String,
-      json['receiverId'] as String,
-      DateTime.parse(json['timestamp'] as String),
-    );
-  }
+  // factory Message.fromJson(Map<String, dynamic> json) {
+  //   return Message(
+  //     json['isText'] as bool,
+  //     json['text'] as String?,
+  //     null,
+  //     json['sender'] as String,
+  //     json['receiver'] as String,
+  //     DateTime.parse(json['timestamp'] as String),
+  //   );
+  // }
 }
