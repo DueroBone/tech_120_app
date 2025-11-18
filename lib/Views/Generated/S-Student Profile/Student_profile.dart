@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
+  @override
+  _ProfilePageState createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final TextEditingController _majorController = TextEditingController();
+  final TextEditingController _bioController = TextEditingController();
+
+  @override
+  void dispose() {
+    _majorController.dispose();
+    _bioController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -32,24 +47,41 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   width: 362,
                   height: 48,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  child: TextFormField(
+                    controller: _majorController,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter major',
+                      hintStyle: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 32,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.62,
+                        letterSpacing: 0.10,
                       ),
-                    ],
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
                   ),
                 ),
               ),
@@ -59,24 +91,43 @@ class ProfilePage extends StatelessWidget {
                 child: Container(
                   width: 364,
                   height: 282,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 364,
-                          height: 282,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  padding: EdgeInsets.all(12),
+                  child: TextFormField(
+                    controller: _bioController,
+                    keyboardType: TextInputType.multiline,
+                    maxLines: null,
+                    expands: true,
+                    textAlignVertical: TextAlignVertical.top,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Write a short bio',
+                      hintStyle: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 32,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.62,
+                        letterSpacing: 0.10,
                       ),
-                    ],
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
                   ),
                 ),
               ),
@@ -98,42 +149,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 35,
-                top: 390,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Bio:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 35,
-                top: 326,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Major:',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
+              // Removed static 'Bio:' and 'Major:' label widgets
               Positioned(
                 left: 0,
                 top: 167,

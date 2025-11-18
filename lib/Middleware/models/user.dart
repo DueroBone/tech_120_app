@@ -1,14 +1,14 @@
 import 'dart:ui';
 
-import 'package:tech_120_app/Middleware/authentication.dart';
+import 'package:tech_120_app/Middleware/models/auth_token.dart';
 
 class User {
-  final AuthToken id;
+  final AuthToken authToken;
   final String name;
   final Image? avatar;
   final bool isMentor;
 
-  User(this.id, this.name, this.avatar, this.isMentor);
+  User(this.authToken, this.name, this.avatar, this.isMentor);
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
@@ -20,7 +20,7 @@ class User {
   }
 
   Map<String, dynamic> toJson() => {
-    'id': id.token,
+    'id': authToken.token,
     'name': name,
     'isMentor': isMentor,
   };
