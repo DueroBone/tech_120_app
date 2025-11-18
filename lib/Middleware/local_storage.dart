@@ -61,7 +61,19 @@ class LocalStorage {
         headers: {'Authorization': authToken.token,
             'Other-User-Id': otherUser.authToken.token},
       );
-      return null; // TODO
+      //return null; // TODO
+      // Return from one to three random messages for testing
+      return List.generate(
+        (1 + (DateTime.now().millisecondsSinceEpoch % 3)),
+        (index) => Message(
+          true,
+          'Test message ${index + 1} to ${otherUser.name}',
+          null,
+          getCurrentUserFromStorage()!,
+          otherUser,
+          DateTime.now().subtract(Duration(minutes: index * 5)),
+        ),
+      );
     } catch (e) {
       return null; // TODO
     }
