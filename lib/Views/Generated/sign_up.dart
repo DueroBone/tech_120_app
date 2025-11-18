@@ -1,6 +1,25 @@
 import 'package:flutter/material.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
+  @override
+  _SignupState createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _majorController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _majorController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -36,71 +55,41 @@ class Signup extends StatelessWidget {
                 child: Container(
                   width: 362,
                   height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  child: TextFormField(
+                    controller: _majorController,
+                    keyboardType: TextInputType.text,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter major',
+                      hintStyle: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 32,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.62,
+                        letterSpacing: 0.10,
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 365,
-                child: Container(
-                  width: 362,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
                   ),
                 ),
               ),
@@ -110,71 +99,41 @@ class Signup extends StatelessWidget {
                 child: Container(
                   width: 362,
                   height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  child: TextFormField(
+                    controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter email',
+                      hintStyle: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 32,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.62,
+                        letterSpacing: 0.10,
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 449,
-                child: Container(
-                  width: 362,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
                   ),
                 ),
               ),
@@ -184,71 +143,42 @@ class Signup extends StatelessWidget {
                 child: Container(
                   width: 362,
                   height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  child: TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    keyboardType: TextInputType.visiblePassword,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter password',
+                      hintStyle: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 32,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.62,
+                        letterSpacing: 0.10,
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 529,
-                child: Container(
-                  width: 362,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
                   ),
                 ),
               ),
@@ -258,71 +188,41 @@ class Signup extends StatelessWidget {
                 child: Container(
                   width: 362,
                   height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  alignment: Alignment.centerLeft,
+                  child: TextFormField(
+                    controller: _nameController,
+                    keyboardType: TextInputType.name,
+                    cursorColor: Colors.black,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: 'Enter name',
+                      hintStyle: TextStyle(
+                        color: Colors.black38,
+                        fontSize: 32,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w500,
+                        height: 0.62,
+                        letterSpacing: 0.10,
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 16,
-                top: 288,
-                child: Container(
-                  width: 362,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    boxShadow: [
-                      BoxShadow(
-                        color: Color(0x3F000000),
-                        blurRadius: 4,
-                        offset: Offset(0, 4),
-                        spreadRadius: 0,
-                      ),
-                    ],
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 362,
-                          height: 48,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      isCollapsed: true,
+                      contentPadding: EdgeInsets.zero,
+                    ),
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
                   ),
                 ),
               ),
@@ -426,152 +326,10 @@ class Signup extends StatelessWidget {
                   ),
                 ),
               ),
-              Positioned(
-                left: 35,
-                top: 302,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Name:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 35,
-                top: 302,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Name:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 35,
-                top: 462,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Email:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 35,
-                top: 462,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Email:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 35,
-                top: 540,
-                child: SizedBox(
-                  width: 198,
-                  height: 26,
-                  child: Text(
-                    'Password:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 35,
-                top: 540,
-                child: SizedBox(
-                  width: 198,
-                  height: 26,
-                  child: Text(
-                    'Password:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 37,
-                top: 379,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Major:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 37,
-                top: 379,
-                child: SizedBox(
-                  width: 112,
-                  child: Text(
-                    'Major:',
-                    style: TextStyle(
-                      color: const Color(0xFF81CBF3),
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-              ),
+              // Name label removed to allow taps to reach the input field
+              // Email label removed to allow taps to reach the input field
+              // Password label removed to allow taps to reach the input field
+              // Major label removed to allow taps to reach the input field
               Positioned(
                 left: 9,
                 top: 722,
