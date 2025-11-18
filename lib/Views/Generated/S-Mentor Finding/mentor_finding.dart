@@ -269,6 +269,101 @@ class MentorFinding extends StatelessWidget {
                 ),
               ),
               Positioned(
+                left: 134,
+                top: 167,
+                child: SizedBox(
+                  width: 163,
+                  height: 37,
+                  child: Text(
+                    'Mentor 1',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 134,
+                top: 368,
+                child: SizedBox(
+                  width: 163,
+                  height: 37,
+                  child: Text(
+                    'Mentor 3',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 138,
+                top: 470,
+                child: SizedBox(
+                  width: 163,
+                  height: 37,
+                  child: Text(
+                    'Mentor 4',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 138,
+                top: 567,
+                child: SizedBox(
+                  width: 163,
+                  height: 37,
+                  child: Text(
+                    'Mentor 5',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 132,
+                top: 264,
+                child: SizedBox(
+                  width: 163,
+                  height: 37,
+                  child: Text(
+                    'Mentor 2',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 32,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w500,
+                      height: 0.62,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
                 left: 0,
                 top: 681,
                 child: Container(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_120_app/Views/bottom_tabs.dart';
 import 'package:tech_120_app/Middleware/current_user.dart';
 import 'package:tech_120_app/Middleware/models/user.dart';
-import 'package:tech_120_app/Middleware/authentication.dart';
+import 'package:tech_120_app/Middleware/models/auth_token.dart';
 import 'package:tech_120_app/Middleware/local_storage.dart';
 
 class LoginPlaceholder extends StatelessWidget {
@@ -27,8 +27,8 @@ class LoginPlaceholder extends StatelessWidget {
                 final testToken = AuthToken('test-token-123');
 
                 // Persist token so initializer can pick it up if needed.
-                final storage = LocalStorage2();
-                await storage.saveAuthTokenToStorage(testToken);
+                final storage = LocalStorage();
+                await storage.saveAuthToken(testToken);
 
                 final testUser = User(testToken, 'Test User', null, false);
                 currentUserStore.setUser(testUser);
