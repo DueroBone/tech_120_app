@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Views/Manual/mentor_finding_view.dart';
 import 'package:tech_120_app/Views/Manual/smaller_view.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
 import 'package:tech_120_app/Views/Manual/test_page_view.dart';
@@ -96,7 +97,7 @@ class HomeContent extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MentorMatchView()),
+              MaterialPageRoute(builder: (context) => const MentorFindingView()),
             );
           },
           child: const Text('Go to Mentor match Page'),

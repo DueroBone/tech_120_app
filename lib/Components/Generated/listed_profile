@@ -1,0 +1,71 @@
+import 'package:flutter/material.dart'; // Where flutter finds what makes the app
+import 'package:tech_120_app/Models/user.dart';
+
+class Rectangle13 extends StatefulWidget {
+  final User user;
+  const Rectangle13({Key? key, User user}) : super(key: key);
+
+  @override
+  _Rectangle13State createState() => _Rectangle13State();
+}
+
+class _Rectangle13State extends State<Rectangle13> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 256,
+          height: 49,
+          child: Stack(
+            children: [
+              Positioned(
+                left: 0,
+                top: 0,
+                child: Container(
+                  width: 256,
+                  height: 49,
+                  decoration: ShapeDecoration(
+                    color: const Color(0xFFD9D9D9),
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(width: 3),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      widget.user.name,
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        Container(
+          width: 75,
+          height: 75,
+          decoration: ShapeDecoration(
+            image: DecorationImage(
+              image: widget.user.avatar,
+              fit: BoxFit.cover,
+            ),
+            shape: RoundedRectangleBorder(
+              side: BorderSide(width: 1),
+              borderRadius: BorderRadius.circular(61),
+            ),
+          ),
+        ),
+        Container(
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+          ),
+          child: Stack(),
+        ),
+      ],
+    );
+  }
+}
