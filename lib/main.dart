@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart'; // Where flutter finds what makes the app
 import 'package:tech_120_app/Middleware/current_user.dart';
 import 'package:tech_120_app/Views/Manual/home_page_view.dart'; // and home page
-import 'package:tech_120_app/Views/Manual/chat_view.dart';
+import 'package:tech_120_app/Views/Manual/Testing/chat_view.dart';
 import 'package:tech_120_app/Views/bottom_tabs.dart';
 import 'package:tech_120_app/Views/Manual/Mentor/mentor_profile.dart';
 import 'package:tech_120_app/Views/Manual/login_placeholder.dart';

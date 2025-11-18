@@ -3,7 +3,7 @@ import 'package:tech_120_app/Views/Manual/smaller_view.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
 import 'package:tech_120_app/Views/Manual/test_page_view.dart';
 import 'package:tech_120_app/Views/Manual/test_page_test_view.dart';
-import 'package:tech_120_app/Views/Manual/chat_view.dart';
+import 'package:tech_120_app/Views/Manual/Testing/chat_view.dart';
 import 'package:tech_120_app/Views/Manual/sign_up_view.dart';
 import 'package:tech_120_app/Views/Manual/mentor_match_view.dart';
 import 'package:tech_120_app/Views/Manual/Mentor/mentor_profile.dart';
