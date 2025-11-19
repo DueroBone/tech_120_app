@@ -30,7 +30,12 @@ class LoginPlaceholder extends StatelessWidget {
                 final storage = LocalStorage();
                 await storage.saveAuthToken(testToken);
 
-                final testUser = User(testToken, 'Test User', null, false);
+                final testUser = User(
+                  testToken,
+                  'Test User',
+                  Image.asset('assets/images/blank_profile_pic.png'),
+                  false,
+                );
                 currentUserStore.setUser(testUser);
 
                 // Navigate into the main app scaffold so bottom tabs are present.

@@ -114,7 +114,7 @@ class LocalStorage {
   /// Returns the users that the current user has as contacts.
   Future<List<User>?> fetchContactsForUser(User user) async {
     // Generate 3 test users
-    return List.generate(
+    List<User> a = List<User>.generate(
       10,
       (index) => User(
         AuthToken('user_token_$index'),
@@ -123,6 +123,10 @@ class LocalStorage {
         index % 2 == 0,
       ),
     );
+    a.add(getCurrentUserFromStorage()!);
+    // return a with a delay to simulate network
+    await Future.delayed(const Duration(seconds: 1));
+    return a;
     try {
       final response = await _networking.getList(
         '/users',

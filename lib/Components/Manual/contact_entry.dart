@@ -30,7 +30,7 @@ class _ContactEntryState extends State<ContactEntry> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: CircleAvatar(
-                  radius: 30.0,
+                  radius: 35.0,
                   backgroundColor: Colors.blue,
                   child: widget.user.avatar != null
                       ? ClipOval(
