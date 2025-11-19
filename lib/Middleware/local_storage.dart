@@ -55,21 +55,23 @@ class LocalStorage {
   // Return raw list JSON for messages for the given other user.
   Future<List<Message>?> fetchMessagesToUser(
     // Remove ?
-    AuthToken authToken,
+    User self,
     User otherUser,
   ) async {
     try {
       final response = await _networking.getList(
         '/messages',
         headers: {
-          'Authorization': authToken.token,
+          'Authorization': self.authToken.token,
           'Other-User-Id': otherUser.authToken.token,
         },
       );
-      //return null; // TODO
+      return null; // TODO
       // Return from one to three random messages for testing
+    } catch (e) {
+      // return null; // TODO
       return List.generate(
-        (1 + (DateTime.now().millisecondsSinceEpoch % 3)),
+        (1 + (DateTime.now().millisecondsSinceEpoch % 10)),
         (index) => Message(
           true,
           'Test message ${index + 1} to ${otherUser.name}',
@@ -79,8 +81,6 @@ class LocalStorage {
           DateTime.now().subtract(Duration(minutes: index * 5)),
         ),
       );
-    } catch (e) {
-      return null; // TODO
     }
   }
 

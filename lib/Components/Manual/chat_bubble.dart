@@ -12,19 +12,22 @@ class ChatBubble extends StatefulWidget {
 class _ChatBubbleState extends State<ChatBubble> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: SizedBox(
-        // Optionally set a max width if you want the bubble constrained
-        // width: 300,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            ChatBubbleRaw(),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0),
-              child: Text(widget.message, textAlign: TextAlign.center),
-            ),
-          ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(
+        child: SizedBox(
+          // Optionally set a max width if you want the bubble constrained
+          // width: 300,
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              ChatBubbleRaw(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Text(widget.message, textAlign: TextAlign.center),
+              ),
+            ],
+          ),
         ),
       ),
     );

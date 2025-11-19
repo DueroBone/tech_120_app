@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tech_120_app/Middleware/models/user.dart';
+import 'package:tech_120_app/Views/Manual/automated_message_list.dart';
 import 'package:tech_120_app/Views/Manual/student_messages_view.dart';
 
 class ContactEntry extends StatefulWidget {
@@ -57,7 +58,7 @@ class _ContactEntryState extends State<ContactEntry> {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return StudentMessagesView();
+              return AutomatedMessageList(otherUser: widget.user);
             },
           ),
         );
