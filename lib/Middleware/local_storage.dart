@@ -70,17 +70,20 @@ class LocalStorage {
       // Return from one to three random messages for testing
     } catch (e) {
       // return null; // TODO
-      return List.generate(
-        (1 + (DateTime.now().millisecondsSinceEpoch % 10)),
-        (index) => Message(
-          true,
-          'Test message ${index + 1} to ${otherUser.name}',
+      return List.generate((1 + (DateTime.now().millisecondsSinceEpoch % 10)), (
+        index,
+      ) {
+        final isFromCurrent =
+            ((DateTime.now().millisecondsSinceEpoch + index) % 2 == 0);
+        return Message(
+          isFromCurrent,
+          'Test message ${index + 1} to ${isFromCurrent ? 'other' : 'current'} user.',
           null,
-          getCurrentUserFromStorage()!,
-          otherUser,
+          isFromCurrent ? getCurrentUserFromStorage()! : otherUser,
+          isFromCurrent ? otherUser : getCurrentUserFromStorage()!,
           DateTime.now().subtract(Duration(minutes: index * 5)),
-        ),
-      );
+        );
+      });
     }
   }
 

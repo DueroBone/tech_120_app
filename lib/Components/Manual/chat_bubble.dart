@@ -3,7 +3,7 @@ import 'package:tech_120_app/Components/Generated/chat_bubble.dart';
 
 class ChatBubble extends StatefulWidget {
   final String message;
-  const ChatBubble({Key? key, required this.message}) : super(key: key);
+  const ChatBubble({super.key, required this.message});
 
   @override
   State<ChatBubble> createState() => _ChatBubbleState();
