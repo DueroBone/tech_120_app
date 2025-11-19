@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+
 class MessagingStudentSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          width: 393,
-          height: 756,
+          width: 420,
+          height: 666,
           clipBehavior: Clip.antiAlias,
           decoration: ShapeDecoration(
             gradient: LinearGradient(
@@ -21,41 +22,14 @@ class MessagingStudentSide extends StatelessWidget {
                 blurRadius: 8,
                 offset: Offset(0, 4),
                 spreadRadius: 0,
-              )
+              ),
             ],
           ),
           child: Stack(
             children: [
               Positioned(
-                left: -17,
-                top: 0,
-                child: Container(
-                  width: 434,
-                  height: 123,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 434,
-                          height: 123,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
                 left: -21,
-                top: 653,
+                top: 553,
                 child: Container(
                   width: 438,
                   height: 117,
@@ -66,7 +40,7 @@ class MessagingStudentSide extends StatelessWidget {
                         blurRadius: 4,
                         offset: Offset(0, 4),
                         spreadRadius: 0,
-                      )
+                      ),
                     ],
                   ),
                   child: Stack(
@@ -92,7 +66,7 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 16,
-                top: 676,
+                top: 576,
                 child: Container(
                   width: 298,
                   height: 58,
@@ -119,7 +93,7 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 44,
-                top: 690,
+                top: 590,
                 child: SizedBox(
                   width: 173.15,
                   height: 30.21,
@@ -138,11 +112,13 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 298,
-                top: 750.24,
+                top: 650.24,
                 child: Opacity(
                   opacity: 0.90,
                   child: Container(
-                    transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(-1.57),
+                    transform: Matrix4.identity()
+                      ..translate(0.0, 0.0)
+                      ..rotateZ(-1.57),
                     width: 74.24,
                     height: 95,
                     decoration: BoxDecoration(
@@ -156,7 +132,7 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 172,
-                top: 147,
+                top: 47,
                 child: Container(
                   width: 213,
                   height: 56,
@@ -183,7 +159,7 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 9,
-                top: 215,
+                top: 115,
                 child: Container(
                   width: 213,
                   height: 87,
@@ -210,7 +186,7 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 165,
-                top: 313,
+                top: 213,
                 child: Container(
                   width: 220,
                   height: 128,
@@ -237,7 +213,7 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 9,
-                top: 453,
+                top: 353,
                 child: Container(
                   width: 201,
                   height: 51,
@@ -264,14 +240,16 @@ class MessagingStudentSide extends StatelessWidget {
               ),
               Positioned(
                 left: 79,
-                top: 113,
+                top: -33,
                 child: Container(
-                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(3.14),
+                  transform: Matrix4.identity()
+                    ..translate(0.0, 0.0)
+                    ..rotateZ(3.14),
                   width: 54,
                   height: 60,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/54x60"),
+                      image: Image.asset('assets/images/pic1.jpg').image,
                       fit: BoxFit.contain,
                     ),
                   ),

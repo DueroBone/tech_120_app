@@ -1,11 +1,11 @@
 import 'dart:ui';
-
+import 'package:flutter/widgets.dart';
 import 'package:tech_120_app/Middleware/models/auth_token.dart';
 
 class User {
   final AuthToken authToken;
   final String name;
-  final Image? avatar;
+  final Widget? avatar;
   final bool isMentor;
 
   User(this.authToken, this.name, this.avatar, this.isMentor);

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Components/Manual/contact_entry.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
 import 'package:tech_120_app/Middleware/models/user.dart';
 import 'package:tech_120_app/Middleware/local_storage.dart';
@@ -34,22 +35,21 @@ class _ExampleDisplayListofMentorsState
           } else {
             print("Mentors loaded successfully.");
             final mentors = snapshot.data!;
-            return ListView.builder(
-              // When nested inside MakeFullscreen (which uses
-              // SingleChildScrollView), the ListView would receive
-              // unbounded height. Use `shrinkWrap` and disable internal
-              // scrolling so the outer scroll view manages scrolling.
-              itemCount: mentors.length,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (context, index) {
-                final mentor = mentors[index];
-                return ListTile(
-                  title: Text(mentor.name),
-                  leading: Icon(Icons.person),
-                  subtitle: Text(mentor.isMentor ? 'Mentor' : 'Mentee'),
-                );
-              },
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListView.builder(
+                // When nested inside MakeFullscreen (which uses
+                // SingleChildScrollView), the ListView would receive
+                // unbounded height. Use `shrinkWrap` and disable internal
+                // scrolling so the outer scroll view manages scrolling.
+                itemCount: mentors.length,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  final mentor = mentors[index];
+                  return ContactEntry(user: mentor);
+                },
+              ),
             );
           }
         },

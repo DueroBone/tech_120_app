@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart'; // Where flutter finds what makes the app
+
 class MessagingStudentSide extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class MessagingStudentSide extends StatelessWidget {
                 blurRadius: 8,
                 offset: Offset(0, 4),
                 spreadRadius: 0,
-              )
+              ),
             ],
           ),
           child: Stack(
@@ -66,7 +67,7 @@ class MessagingStudentSide extends StatelessWidget {
                         blurRadius: 4,
                         offset: Offset(0, 4),
                         spreadRadius: 0,
-                      )
+                      ),
                     ],
                   ),
                   child: Stack(
@@ -142,7 +143,9 @@ class MessagingStudentSide extends StatelessWidget {
                 child: Opacity(
                   opacity: 0.90,
                   child: Container(
-                    transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(-1.57),
+                    transform: Matrix4.identity()
+                      ..translate(0.0, 0.0)
+                      ..rotateZ(-1.57),
                     width: 74.24,
                     height: 95,
                     decoration: BoxDecoration(
@@ -266,7 +269,9 @@ class MessagingStudentSide extends StatelessWidget {
                 left: 79,
                 top: 113,
                 child: Container(
-                  transform: Matrix4.identity()..translate(0.0, 0.0)..rotateZ(3.14),
+                  transform: Matrix4.identity()
+                    ..translate(0.0, 0.0)
+                    ..rotateZ(3.14),
                   width: 54,
                   height: 60,
                   decoration: BoxDecoration(

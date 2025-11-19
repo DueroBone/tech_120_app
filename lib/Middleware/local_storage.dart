@@ -1,3 +1,6 @@
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import "package:tech_120_app/Middleware/models/auth_token.dart";
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tech_120_app/Middleware/messaging.dart';
@@ -112,11 +115,11 @@ class LocalStorage {
   Future<List<User>?> fetchContactsForUser(User user) async {
     // Generate 3 test users
     return List.generate(
-      5,
+      10,
       (index) => User(
         AuthToken('user_token_$index'),
         'User $index',
-        null,
+        Image.asset('assets/images/pic${index % 5}.jpg'),
         index % 2 == 0,
       ),
     );
