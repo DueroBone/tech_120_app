@@ -152,7 +152,7 @@ class _BottomTabsState extends State<BottomTabs> {
                   items: const <BottomNavigationBarItem>[
                     BottomNavigationBarItem(
                       icon: Icon(Icons.home),
-                      label: 'Home',
+                      label: 'Due 11-24',
                     ),
                     BottomNavigationBarItem(
                       icon: Icon(Icons.chat),

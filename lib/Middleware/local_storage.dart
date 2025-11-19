@@ -70,6 +70,7 @@ class LocalStorage {
       // Return from one to three random messages for testing
     } catch (e) {
       // return null; // TODO
+      await Future.delayed(const Duration(seconds: 1));
       return List.generate((1 + (DateTime.now().millisecondsSinceEpoch % 10)), (
         index,
       ) {
