@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_120_app/Views/Generated/test_page_test.dart';
+import 'package:tech_120_app/Views/Generated/Testing/test_page_test.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
 
 // Basically just renames Iphone161 to TestPageView for clarity

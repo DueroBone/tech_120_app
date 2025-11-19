@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Views/Manual/example_display_listof_mentors.dart';
 import 'package:tech_120_app/Views/Manual/mentor_finding_view.dart';
 import 'package:tech_120_app/Views/Manual/smaller_view.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
@@ -97,7 +98,9 @@ class HomeContent extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const MentorFindingView()),
+              MaterialPageRoute(
+                builder: (context) => const MentorFindingView(),
+              ),
             );
           },
           child: const Text('Go to Mentor match Page'),
@@ -112,6 +115,17 @@ class HomeContent extends StatelessWidget {
             );
           },
           child: const Text('Go to Mentor Profile'),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ExampleDisplayListofMentors(),
+              ),
+            );
+          },
+          child: const Text('Go to example list of mentors Page'),
         ),
       ],
     );

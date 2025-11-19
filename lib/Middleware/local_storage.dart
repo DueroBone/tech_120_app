@@ -58,8 +58,10 @@ class LocalStorage {
     try {
       final response = await _networking.getList(
         '/messages',
-        headers: {'Authorization': authToken.token,
-            'Other-User-Id': otherUser.authToken.token},
+        headers: {
+          'Authorization': authToken.token,
+          'Other-User-Id': otherUser.authToken.token,
+        },
       );
       //return null; // TODO
       // Return from one to three random messages for testing
@@ -80,10 +82,7 @@ class LocalStorage {
   }
 
   // Send message JSON to server (for now forwards to networking).
-  Future<void> sendMessageToServer(
-    AuthToken authToken,
-    Message message,
-  ) async {
+  Future<void> sendMessageToServer(AuthToken authToken, Message message) async {
     try {
       await _networking.post(
         '/messages',
@@ -110,14 +109,21 @@ class LocalStorage {
   }
 
   /// Returns the users that the current user has as contacts.
-  Future<List<User>?> fetchContactsForUser(AuthToken authToken) async {
+  Future<List<User>?> fetchContactsForUser(User user) async {
+    // Generate 3 test users
+    return List.generate(
+      5,
+      (index) => User(
+        AuthToken('user_token_$index'),
+        'User $index',
+        null,
+        index % 2 == 0,
+      ),
+    );
     try {
       final response = await _networking.getList(
         '/users',
-        headers: {
-          'Authorization': authToken.token,
-          'Filter': 'contacts',
-        },
+        headers: {'Authorization': user.authToken.token, 'Filter': 'contacts'},
       );
       return null; // TODO
     } catch (e) {
