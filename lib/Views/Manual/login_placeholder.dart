@@ -34,6 +34,7 @@ class LoginPlaceholder extends StatelessWidget {
                   testToken,
                   'Test User',
                   Image.asset('assets/images/blank_profile_pic.png'),
+                  null,
                   false,
                 );
                 currentUserStore.setUser(testUser);

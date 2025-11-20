@@ -124,6 +124,7 @@ class LocalStorage {
         AuthToken('user_token_$index'),
         'User $index',
         Image.asset('assets/images/pic${index % 5}.jpg'),
+        null,
         index % 2 == 0,
       ),
     );
