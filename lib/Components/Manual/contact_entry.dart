@@ -33,12 +33,12 @@ class _ContactEntryState extends State<ContactEntry> {
                 child: CircleAvatar(
                   radius: 35.0,
                   backgroundColor: Colors.blue,
-                  child: widget.user.avatar != null
+                  child: widget.user.TEMPavatar != null
                       ? ClipOval(
                           child: SizedBox(
                             width: 56.0,
                             height: 56.0,
-                            child: widget.user.avatar!,
+                            child: widget.user.TEMPavatar!,
                           ),
                         )
                       : Icon(Icons.person, size: 30.0, color: Colors.white),

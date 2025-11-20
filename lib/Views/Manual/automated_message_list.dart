@@ -48,7 +48,8 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final message = messages[index];
-                  return ChatBubble(message: message.text!);
+                  var sentByCurrentUser = message.sender.authToken == currentUser.authToken;
+                  return ChatBubble(message: message.text!, isSentByCurrentUser: sentByCurrentUser);
                 },
               ),
             );

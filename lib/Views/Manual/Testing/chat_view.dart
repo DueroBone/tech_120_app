@@ -27,7 +27,10 @@ class ChatContent extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const ChatView()),
                     );
                   },
-                  child: ChatBubble(message: "Hello!"),
+                  child: ChatBubble(
+                    message: "Hello!",
+                    isSentByCurrentUser: false,
+                  ),
                 ),
               ),
               Padding(
@@ -36,7 +39,10 @@ class ChatContent extends StatelessWidget {
                   onTap: () {
                     Navigator.popUntil(context, (route) => route.isFirst);
                   },
-                  child: ChatBubble(message: "Goodbye!"),
+                  child: ChatBubble(
+                    message: "Goodbye!",
+                    isSentByCurrentUser: true,
+                  ),
                 ),
               ),
             ],

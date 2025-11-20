@@ -136,7 +136,7 @@ class _BottomTabsState extends State<BottomTabs> {
                       1,
                       (context) => const MakeFullscreen(
                         title: 'Chat',
-                        child: ChatContent(),
+                        child: Placeholder(),
                       ),
                     ),
                     _buildNavigator(

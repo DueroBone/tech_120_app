@@ -52,3 +52,5 @@ pubspec.lock
 /macos/
 /windows/
 /web/
+ios/Runner.xcodeproj/project.pbxproj
+ios/Runner/Info.plist

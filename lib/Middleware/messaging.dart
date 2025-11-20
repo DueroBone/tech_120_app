@@ -1,4 +1,4 @@
-import 'dart:ui';
+// images are represented by server-side paths/URLs (imagePath)
 import 'package:tech_120_app/Middleware/models/auth_token.dart';
 import 'package:tech_120_app/Middleware/local_storage.dart';
 import 'package:tech_120_app/Middleware/current_user.dart';
@@ -7,7 +7,7 @@ import 'package:tech_120_app/Middleware/models/user.dart';
 class Message {
   final bool isText;
   final String? text;
-  final Image? image;
+  final String? imagePath;
   final DateTime timestamp;
   final User sender;
   final User receiver;
@@ -15,7 +15,7 @@ class Message {
   Message(
     this.isText,
     this.text,
-    this.image,
+    this.imagePath,
     this.sender,
     this.receiver,
     this.timestamp,
@@ -25,8 +25,9 @@ class Message {
     return {
       'isText': isText,
       'text': text,
-      'senderId': sender,
-      'receiverId': receiver,
+      'imagePath': imagePath,
+      'senderId': sender.authToken.token,
+      'receiverId': receiver.authToken.token,
       'timestamp': timestamp.toIso8601String(),
     };
   }
