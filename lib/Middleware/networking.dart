@@ -7,7 +7,10 @@ class NetworkingService {
   NetworkingService._internal();
 
   // Base URL for API - can be configured
-  String baseUrl = 'https://api.example.com';
+  // Default to HTTP (backend runs without TLS locally). If you're running
+  // the Android emulator, use 'http://10.0.2.2:8000' when calling
+  // `NetworkingService().setBaseUrl(...)` from your app startup.
+  String baseUrl = 'http://127.0.0.1:8000';
 
   // Configure base URL
   void setBaseUrl(String url) {
@@ -20,20 +23,20 @@ class NetworkingService {
     Map<String, String>? headers,
   }) async {
     try {
-      final url = Uri.parse('\$baseUrl\$endpoint');
+      final url = Uri.parse('$baseUrl/$endpoint');
       final response = await http.get(url, headers: headers);
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return json.decode(response.body) as Map<String, dynamic>;
       } else {
         throw NetworkException(
-          'GET request failed with status: \${response.statusCode}',
+          'GET request failed with status: ${response.statusCode}',
           response.statusCode,
         );
       }
     } catch (e) {
       if (e is NetworkException) rethrow;
-      throw NetworkException('GET request failed: \$e', 0);
+      throw NetworkException('GET request failed: $e', 0);
     }
   }
 
@@ -44,11 +47,8 @@ class NetworkingService {
     Map<String, String>? headers,
   }) async {
     try {
-      final url = Uri.parse('\$baseUrl\$endpoint');
-      final defaultHeaders = {
-        'Content-Type': 'application/json',
-        ...?headers,
-      };
+      final url = Uri.parse('$baseUrl/$endpoint');
+      final defaultHeaders = {'Content-Type': 'application/json', ...?headers};
 
       final response = await http.post(
         url,
@@ -60,13 +60,13 @@ class NetworkingService {
         return json.decode(response.body) as Map<String, dynamic>;
       } else {
         throw NetworkException(
-          'POST request failed with status: \${response.statusCode}',
+          'POST request failed with status: ${response.statusCode}',
           response.statusCode,
         );
       }
     } catch (e) {
       if (e is NetworkException) rethrow;
-      throw NetworkException('POST request failed: \$e', 0);
+      throw NetworkException('POST request failed: $e', 0);
     }
   }
 
@@ -77,11 +77,8 @@ class NetworkingService {
     Map<String, String>? headers,
   }) async {
     try {
-      final url = Uri.parse('\$baseUrl\$endpoint');
-      final defaultHeaders = {
-        'Content-Type': 'application/json',
-        ...?headers,
-      };
+      final url = Uri.parse('$baseUrl/$endpoint');
+      final defaultHeaders = {'Content-Type': 'application/json', ...?headers};
 
       final response = await http.put(
         url,
@@ -93,13 +90,13 @@ class NetworkingService {
         return json.decode(response.body) as Map<String, dynamic>;
       } else {
         throw NetworkException(
-          'PUT request failed with status: \${response.statusCode}',
+          'PUT request failed with status: ${response.statusCode}',
           response.statusCode,
         );
       }
     } catch (e) {
       if (e is NetworkException) rethrow;
-      throw NetworkException('PUT request failed: \$e', 0);
+      throw NetworkException('PUT request failed: $e', 0);
     }
   }
 
@@ -109,7 +106,7 @@ class NetworkingService {
     Map<String, String>? headers,
   }) async {
     try {
-      final url = Uri.parse('\$baseUrl\$endpoint');
+      final url = Uri.parse('$baseUrl/$endpoint');
       final response = await http.delete(url, headers: headers);
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
@@ -119,13 +116,13 @@ class NetworkingService {
         return json.decode(response.body) as Map<String, dynamic>;
       } else {
         throw NetworkException(
-          'DELETE request failed with status: \${response.statusCode}',
+          'DELETE request failed with status: ${response.statusCode}',
           response.statusCode,
         );
       }
     } catch (e) {
       if (e is NetworkException) rethrow;
-      throw NetworkException('DELETE request failed: \$e', 0);
+      throw NetworkException('DELETE request failed: $e', 0);
     }
   }
 
@@ -135,20 +132,20 @@ class NetworkingService {
     Map<String, String>? headers,
   }) async {
     try {
-      final url = Uri.parse('\$baseUrl\$endpoint');
+      final url = Uri.parse('$baseUrl/$endpoint');
       final response = await http.get(url, headers: headers);
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return json.decode(response.body) as List<dynamic>;
       } else {
         throw NetworkException(
-          'GET request failed with status: \${response.statusCode}',
+          'GET request failed with status: ${response.statusCode}',
           response.statusCode,
         );
       }
     } catch (e) {
       if (e is NetworkException) rethrow;
-      throw NetworkException('GET request failed: \$e', 0);
+      throw NetworkException('GET request failed: $e', 0);
     }
   }
 }
@@ -160,5 +157,5 @@ class NetworkException implements Exception {
   NetworkException(this.message, this.statusCode);
 
   @override
-  String toString() => 'NetworkException: \$message (Status: \$statusCode)';
+  String toString() => 'NetworkException: $message (Status: $statusCode)';
 }

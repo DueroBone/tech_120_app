@@ -66,10 +66,37 @@ class LocalStorage {
           'Other-User-Id': otherUser.authToken.token,
         },
       );
-      return null; // TODO
-      // Return from one to three random messages for testing
-    } catch (e) {
-      // return null; // TODO
+      // Parse response (expected a List of message JSON objects)
+      final List<Message> messages = [];
+      for (final item in response) {
+        try {
+          final Map<String, dynamic> m = Map<String, dynamic>.from(item);
+          final String senderId = m['senderId'] as String;
+          final String receiverId = m['receiverId'] as String;
+          final bool isText = (m['isText'] == true) || (m['isText'] == 1);
+          final String? text = m['text'] as String?;
+          final String? imagePath = m['imagePath'] as String?;
+          final DateTime timestamp = DateTime.parse(m['timestamp'] as String);
+
+          final User sender = (senderId == self.authToken.token)
+              ? self
+              : otherUser;
+          final User receiver = (receiverId == self.authToken.token)
+              ? self
+              : otherUser;
+
+          messages.add(
+            Message(isText, text, imagePath, sender, receiver, timestamp),
+          );
+        } catch (e) {
+          // skip malformed message
+          continue;
+        }
+      }
+      return messages;
+    } catch (e, st) {
+      print('Error fetching messages, returning test messages: $e\n$st');
+      // For testing, return some fake messages
       await Future.delayed(const Duration(seconds: 1));
       return List.generate((1 + (DateTime.now().millisecondsSinceEpoch % 10)), (
         index,
@@ -85,6 +112,8 @@ class LocalStorage {
           DateTime.now().subtract(Duration(minutes: index * 5)),
         );
       });
+      // On error, fallback to returning an empty list
+      // return <Message>[];
     }
   }
 
@@ -96,8 +125,9 @@ class LocalStorage {
         headers: {'Authorization': authToken.token},
         body: message.toJson(),
       );
-    } catch (e) {
+    } catch (e, st) {
       // TODO: Handle error if needed
+      print('Error sending message to server: $e\n$st');
     }
   }
 
@@ -109,37 +139,57 @@ class LocalStorage {
         '/users',
         headers: {'Authorization': authToken.token},
       );
-      return null; // TODO
-    } catch (e) {
-      return null; // TODO
+      final List<User> users = [];
+      for (final item in response) {
+        try {
+          final Map<String, dynamic> u = Map<String, dynamic>.from(item);
+          users.add(User.fromJson(u));
+        } catch (e) {
+          continue;
+        }
+      }
+      return users;
+    } catch (e, st) {
+      print('Error fetching all users, returning null: $e\n$st');
+      return null;
     }
   }
 
   /// Returns the users that the current user has as contacts.
   Future<List<User>?> fetchContactsForUser(User user) async {
-    // Generate 3 test users
-    List<User> a = List<User>.generate(
-      10,
-      (index) => User(
-        AuthToken('user_token_$index'),
-        'User $index',
-        Image.asset('assets/images/pic${index % 5}.jpg'),
-        null,
-        index % 2 == 0,
-      ),
-    );
-    a.add(getCurrentUserFromStorage()!);
-    // return a with a delay to simulate network
-    await Future.delayed(const Duration(seconds: 1));
-    return a;
     try {
       final response = await _networking.getList(
         '/users',
         headers: {'Authorization': user.authToken.token, 'Filter': 'contacts'},
       );
-      return null; // TODO
-    } catch (e) {
-      return null; // TODO
+      final List<User> users = [];
+      for (final item in response) {
+        try {
+          final Map<String, dynamic> u = Map<String, dynamic>.from(item);
+          users.add(User.fromJson(u));
+        } catch (e, st) {
+          print('Error parsing user from JSON: $e\n$st');
+          continue;
+        }
+      }
+      return users;
+    } catch (e, st) {
+      // Generate 3 test users
+      print('Error fetching contacts, returning test users: $e\n$st');
+      List<User> a = List<User>.generate(
+        10,
+        (index) => User(
+          AuthToken('user_token_$index'),
+          'User $index',
+          Image.asset('assets/images/pic${index % 5}.jpg'),
+          null,
+          index % 2 == 0,
+        ),
+      );
+      a.add(getCurrentUserFromStorage()!);
+      // return a with a delay to simulate network
+      await Future.delayed(const Duration(seconds: 1));
+      return a;
     }
   }
 
