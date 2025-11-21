@@ -1,6 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Middleware/local_storage.dart';
+import 'package:tech_120_app/Middleware/messaging.dart' as msg_model;
+import 'package:tech_120_app/Middleware/models/user.dart';
 
-class MessagingStudentSide extends StatelessWidget {
+class MessagingStudentSide extends StatefulWidget {
+  final User? otherUser;
+  const MessagingStudentSide({Key? key, this.otherUser}) : super(key: key);
+
+  @override
+  _MessagingStudentSideState createState() => _MessagingStudentSideState();
+}
+
+class _MessagingStudentSideState extends State<MessagingStudentSide> {
+  final TextEditingController _messageController = TextEditingController();
+
+  @override
+  void dispose() {
+    _messageController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _sendMessage() async {
+    final local = LocalStorage();
+    final sender = local.getCurrentUserFromStorage();
+    final receiver = widget.otherUser;
+    final text = _messageController.text.trim();
+
+    if (sender == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No current user')));
+      return;
+    }
+    if (receiver == null) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No recipient selected')));
+      return;
+    }
+    if (text.isEmpty) {
+      return;
+    }
+
+    final message = msg_model.Message(true, text, null, sender, receiver, DateTime.now());
+    try {
+      await local.sendMessageToServer(sender.authToken, message);
+      _messageController.clear();
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Message sent')));
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error sending message')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -64,20 +111,20 @@ class MessagingStudentSide extends StatelessWidget {
                   ),
                 ),
               ),
+              // Message input + send button
               Positioned(
                 left: 16,
                 top: 576,
                 child: Container(
-                  width: 298,
+                  width: 380,
                   height: 58,
-                  child: Stack(
+                  padding: EdgeInsets.symmetric(horizontal: 8),
+                  child: Row(
                     children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
+                      Expanded(
                         child: Container(
-                          width: 298,
-                          height: 58,
+                          height: 50,
+                          padding: EdgeInsets.symmetric(horizontal: 12),
                           decoration: ShapeDecoration(
                             color: const Color(0xFF81CBF3),
                             shape: RoundedRectangleBorder(
@@ -85,28 +132,36 @@ class MessagingStudentSide extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                           ),
+                          child: Center(
+                            child: TextFormField(
+                              controller: _messageController,
+                              decoration: InputDecoration.collapsed(hintText: 'Message'),
+                              textInputAction: TextInputAction.send,
+                              onFieldSubmitted: (_) => _sendMessage(),
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: 8),
+                      Container(
+                        width: 56,
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: _sendMessage,
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Color(0xFF253067),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                          ),
+                          child: Icon(Icons.send, color: Colors.white),
                         ),
                       ),
                     ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 44,
-                top: 590,
-                child: SizedBox(
-                  width: 173.15,
-                  height: 30.21,
-                  child: Text(
-                    'Message',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32,
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      height: 0.62,
-                      letterSpacing: 0.10,
-                    ),
                   ),
                 ),
               ),
