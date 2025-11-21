@@ -14,6 +14,7 @@ class AutomatedMessageList extends StatefulWidget {
 }
 
 class _AutomatedMessageListState extends State<AutomatedMessageList> {
+  final GlobalKey _lastMessageKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     final currentUser = LocalStorage().getCurrentUserFromStorage();
@@ -37,25 +38,42 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
           } else {
             print("Messages loaded successfully.");
             final messages = snapshot.data!;
+            // After messages are loaded, render them as a column so the
+            // outer SingleChildScrollView (from MakeFullscreen) controls
+            // scrolling. Attach a key to the last message so we can
+            // scroll it into view after the frame.
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              try {
+                final ctx = _lastMessageKey.currentContext;
+                if (ctx != null) {
+                  Scrollable.ensureVisible(
+                    ctx,
+                    duration: const Duration(milliseconds: 250),
+                    alignment: 1.0,
+                  );
+                }
+              } catch (e) {
+                // Ignore if ensureVisible fails for any reason.
+              }
+            });
+
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                // When nested inside MakeFullscreen (which uses
-                // SingleChildScrollView), the ListView would receive
-                // unbounded height. Use `shrinkWrap` and disable internal
-                // scrolling so the outer scroll view manages scrolling.
-                itemCount: messages.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: List<Widget>.generate(messages.length, (index) {
                   final message = messages[index];
                   var sentByCurrentUser =
                       message.sender.authToken == currentUser.authToken;
-                  return ChatBubble(
+                  final bubble = ChatBubble(
                     message: message.text!,
                     isSentByCurrentUser: sentByCurrentUser,
                   );
-                },
+                  if (index == messages.length - 1) {
+                    return Container(key: _lastMessageKey, child: bubble);
+                  }
+                  return bubble;
+                }),
               ),
             );
           }

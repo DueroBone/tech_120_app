@@ -77,8 +77,8 @@ class LocalStorage {
           final bool isText = (m['isText'] == true) || (m['isText'] == 1);
           final String? text = m['text'] as String?;
           final String? imagePath = m['imagePath'] as String?;
-            DateTime timestamp;
-            try {
+          DateTime timestamp;
+          try {
             final tsValue = m['timestamp'];
             if (tsValue is String && tsValue.isNotEmpty) {
               timestamp = DateTime.parse(tsValue);
@@ -89,10 +89,10 @@ class LocalStorage {
               // Fallback when timestamp is missing or unexpected type
               timestamp = DateTime.now();
             }
-            } catch (e) {
+          } catch (e) {
             print('Error parsing timestamp, using current time: $e');
             timestamp = DateTime.now();
-            }
+          }
 
           final User sender = (senderId == self.authToken.token)
               ? self
@@ -145,6 +145,27 @@ class LocalStorage {
     } catch (e, st) {
       // TODO: Handle error if needed
       print('Error sending message to server: $e\n$st');
+    }
+  }
+
+  // Upload an image file to the server using the NetworkingService helper.
+  // Returns the parsed JSON response (e.g. contains `imagePath`) or null on error.
+  Future<Map<String, dynamic>?> uploadImageFile(
+    User user,
+    File imageFile,
+  ) async {
+    try {
+      final headers = {'Authorization': user.authToken.token};
+      final resp = await NetworkingService().uploadFile(
+        'upload',
+        file: imageFile,
+        headers: headers,
+        fieldName: 'file',
+      );
+      return resp;
+    } catch (e) {
+      print('Error uploading image: $e');
+      return null;
     }
   }
 

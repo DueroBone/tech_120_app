@@ -57,7 +57,7 @@ class FigmaToCodeApp extends StatelessWidget {
       routes: {
         '/home': (context) => const HomePageView(),
         '/chat': (context) => const ChatView(),
-        '/profile': (context) => const MentorMessagingView(),
+        '/profile': (context) => const Placeholder(),
       },
     ); // ctrl + click to view
   }

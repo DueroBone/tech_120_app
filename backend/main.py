@@ -77,80 +77,38 @@ def create_database(db_path="database.db"):
 
 
 @app.post("/upload")
-async def upload_image(
-    request: Request,
-    file: UploadFile = File(...),
-    senderId: Optional[str] = Form(None),
-    receiverId: Optional[str] = Form(None),
-    timestamp: Optional[str] = Form(None),
-    isText: Optional[bool] = Form(None),
-    text: Optional[str] = Form(None),
-):
-    # Basic validation
+async def upload_image(request: Request, file: UploadFile = File(...)):
+    """Accept only an image file, save it to the uploads folder, and
+    return the absolute URL clients can use to fetch it.
+    """
+    # Basic validation: only images allowed
     content_type = file.content_type or ""
     if content_type.split("/")[0] != "image":
         raise HTTPException(status_code=400, detail="Only image uploads are allowed")
 
-    # Generate a safe random filename
+    # Read contents (small files expected). You can add streaming if needed.
+    contents = await file.read()
+    # Generate a safe random filename preserving extension
     original_name = file.filename or ""
     ext = os.path.splitext(original_name)[1] if original_name else ""
     filename = f"{uuid.uuid4().hex}{ext}"
     dest_path = os.path.join(UPLOAD_DIR, filename)
 
-    # Save file
+    # Save to disk
     try:
         with open(dest_path, "wb") as f:
-            contents = await file.read()
             f.write(contents)
+    except Exception:
+        await file.close()
+        raise HTTPException(status_code=500, detail="Failed to save uploaded file")
     finally:
         await file.close()
 
-    # Optionally, create a Messages DB row if sender/receiver/timestamp provided.
-    msg = None
-    # Prefer Authorization header token as sender if present
-    auth = request.headers.get("authorization")
-    token = extract_token(auth)
-    final_sender = token or senderId
-    if final_sender and receiverId and timestamp:
-        conn = db_connect()
-        cur = conn.cursor()
-        # Ensure users exist
-        for uid in (final_sender, receiverId):
-            cur.execute("SELECT 1 FROM Users WHERE id = ?", (uid,))
-            if not cur.fetchone():
-                cur.execute(
-                    "INSERT INTO Users (id, name, isMentor) VALUES (?, ?, ?)",
-                    (uid, f"User {uid}", 0),
-                )
-        cur.execute(
-            "INSERT INTO Messages (isText, text, imagePath, timestamp, senderId, receiverId) VALUES (?, ?, ?, ?, ?, ?)",
-            (
-                1 if isText else 0,
-                text,
-                f"/uploads/{filename}",
-                timestamp,
-                final_sender,
-                receiverId,
-            ),
-        )
-        conn.commit()
-        msg_id = cur.lastrowid
-        conn.close()
-        msg = {
-            "id": msg_id,
-            "isText": bool(isText),
-            "text": text,
-            "imagePath": f"/uploads/{filename}",
-            "timestamp": timestamp,
-            "senderId": final_sender,
-            "receiverId": receiverId,
-        }
+    # Build absolute URL clients can use
+    base = str(request.base_url).rstrip("/")
+    url = f"{base}/uploads/{filename}"
 
-    # Return the relative path which clients can request at /uploads/{filename}
-    resp = {"imagePath": f"/uploads/{filename}", "filename": filename}
-    if msg:
-        resp["message"] = msg  # type: ignore
-    return JSONResponse(resp)
+    return JSONResponse({"imagePath": url, "filename": filename})
 
 
 def db_connect():

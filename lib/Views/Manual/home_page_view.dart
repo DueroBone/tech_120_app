@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Middleware/local_storage.dart';
 import 'package:tech_120_app/Views/Manual/example_display_listof_mentors.dart';
 import 'package:tech_120_app/Views/Manual/mentor_finding_view.dart';
 import 'package:tech_120_app/Views/Manual/smaller_view.dart';
@@ -110,7 +111,7 @@ class HomeContent extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const MentorMessagingView(),
+                builder: (context) => MentorMessagingView(otherUser: LocalStorage().getCurrentUserFromStorage()!),
               ),
             );
           },

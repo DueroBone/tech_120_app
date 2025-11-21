@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tech_120_app/Middleware/local_storage.dart';
 import 'package:tech_120_app/Middleware/messaging.dart' as msg_model;
 import 'package:tech_120_app/Middleware/models/user.dart';
+import 'package:tech_120_app/Views/Manual/automated_message_list.dart';
 
 class MessagingStudentSide extends StatefulWidget {
   final User? otherUser;
@@ -27,24 +28,42 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
     final text = _messageController.text.trim();
 
     if (sender == null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No current user')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('No current user')));
       return;
     }
     if (receiver == null) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('No recipient selected')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('No recipient selected')));
       return;
     }
     if (text.isEmpty) {
       return;
     }
 
-    final message = msg_model.Message(true, text, null, sender, receiver, DateTime.now());
+    final message = msg_model.Message(
+      true,
+      text,
+      null,
+      sender,
+      receiver,
+      DateTime.now(),
+    );
     try {
       await local.sendMessageToServer(sender.authToken, message);
       _messageController.clear();
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Message sent')));
+      // Trigger a rebuild so `AutomatedMessageList`'s FutureBuilder
+      // re-runs and fetches latest messages.
+      if (mounted) setState(() {});
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Message sent')));
     } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Error sending message')));
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error sending message')));
     }
   }
 
@@ -135,7 +154,9 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
                           child: Center(
                             child: TextFormField(
                               controller: _messageController,
-                              decoration: InputDecoration.collapsed(hintText: 'Message'),
+                              decoration: InputDecoration.collapsed(
+                                hintText: 'Message',
+                              ),
                               textInputAction: TextInputAction.send,
                               onFieldSubmitted: (_) => _sendMessage(),
                               style: TextStyle(
@@ -185,112 +206,70 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
                   ),
                 ),
               ),
+              // Message list area: use AutomatedMessageList when an
+              // `otherUser` is provided; otherwise show lightweight
+              // placeholders for the layout.
               Positioned(
-                left: 172,
+                left: 9,
                 top: 47,
                 child: Container(
-                  width: 213,
-                  height: 56,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 213,
-                          height: 56,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFF81CBF3),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
+                  width: 402,
+                  height: 420,
+                  child: widget.otherUser != null
+                      ? AutomatedMessageList(otherUser: widget.otherUser!)
+                      : Column(
+                          children: [
+                            // Simple visual placeholders when no recipient
+                            // is selected.
+                            Container(
+                              width: 213,
+                              height: 56,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xFF81CBF3),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(width: 3),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 9,
-                top: 115,
-                child: Container(
-                  width: 213,
-                  height: 87,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 213,
-                          height: 87,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
+                            SizedBox(height: 12),
+                            Container(
+                              width: 213,
+                              height: 87,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xFFD9D9D9),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(width: 3),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 165,
-                top: 213,
-                child: Container(
-                  width: 220,
-                  height: 128,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 220,
-                          height: 128,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFF81CBF3),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
+                            SizedBox(height: 12),
+                            Container(
+                              width: 220,
+                              height: 128,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xFF81CBF3),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(width: 3),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
                             ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Positioned(
-                left: 9,
-                top: 353,
-                child: Container(
-                  width: 201,
-                  height: 51,
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        left: 0,
-                        top: 0,
-                        child: Container(
-                          width: 201,
-                          height: 51,
-                          decoration: ShapeDecoration(
-                            color: const Color(0xFFD9D9D9),
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(width: 3),
-                              borderRadius: BorderRadius.circular(20),
+                            SizedBox(height: 12),
+                            Container(
+                              width: 201,
+                              height: 51,
+                              decoration: ShapeDecoration(
+                                color: const Color(0xFFD9D9D9),
+                                shape: RoundedRectangleBorder(
+                                  side: BorderSide(width: 3),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
                             ),
-                          ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
                 ),
               ),
               Positioned(

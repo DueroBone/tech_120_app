@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 class NetworkingService {
@@ -146,6 +147,47 @@ class NetworkingService {
     } catch (e) {
       if (e is NetworkException) rethrow;
       throw NetworkException('GET request failed: $e', 0);
+    }
+  }
+
+  /// Upload a single file under form field `file` to `endpoint` and return parsed JSON.
+  Future<Map<String, dynamic>> uploadFile(
+    String endpoint, {
+    required File file,
+    Map<String, String>? headers,
+    String fieldName = 'file',
+  }) async {
+    try {
+      final uri = Uri.parse('$baseUrl/$endpoint');
+      final request = http.MultipartRequest('POST', uri);
+
+      // Merge headers if any (MultipartRequest sets its own Content-Type)
+      if (headers != null) request.headers.addAll(headers);
+
+      // Use MultipartFile.fromPath which streams the file
+      final filename = file.path.split('/').last;
+      final multipartFile = await http.MultipartFile.fromPath(
+        fieldName,
+        file.path,
+        filename: filename,
+      );
+      request.files.add(multipartFile);
+
+      final streamedResponse = await request.send();
+      final response = await http.Response.fromStream(streamedResponse);
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        if (response.body.isEmpty) return {'success': true};
+        return json.decode(response.body) as Map<String, dynamic>;
+      } else {
+        throw NetworkException(
+          'Upload failed with status: ${response.statusCode}',
+          response.statusCode,
+        );
+      }
+    } catch (e) {
+      if (e is NetworkException) rethrow;
+      throw NetworkException('Upload failed: $e', 0);
     }
   }
 }
