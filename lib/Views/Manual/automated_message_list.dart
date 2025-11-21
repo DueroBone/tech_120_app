@@ -18,6 +18,7 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
   Widget build(BuildContext context) {
     final currentUser = LocalStorage().getCurrentUserFromStorage();
     return MakeFullscreen(
+      title: widget.otherUser.name,
       child: FutureBuilder<List<Message>?>(
         future: LocalStorage().fetchMessagesToUser(
           currentUser!,
@@ -48,8 +49,12 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final message = messages[index];
-                  var sentByCurrentUser = message.sender.authToken == currentUser.authToken;
-                  return ChatBubble(message: message.text!, isSentByCurrentUser: sentByCurrentUser);
+                  var sentByCurrentUser =
+                      message.sender.authToken == currentUser.authToken;
+                  return ChatBubble(
+                    message: message.text!,
+                    isSentByCurrentUser: sentByCurrentUser,
+                  );
                 },
               ),
             );

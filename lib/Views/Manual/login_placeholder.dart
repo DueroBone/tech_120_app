@@ -10,6 +10,8 @@ class LoginPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final storage = LocalStorage();
+    storage.clearAuthToken(); // TODO: Check if needed
     return Scaffold(
       appBar: AppBar(title: const Text('Login (placeholder)')),
       body: Center(
@@ -24,12 +26,10 @@ class LoginPlaceholder extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 // Create a fake auth token and user for testing.
-                final testToken = AuthToken('abc');
+                final testToken = AuthToken('123');
 
                 // Persist token so initializer can pick it up if needed.
-                final storage = LocalStorage();
                 await storage.saveAuthToken(testToken);
-
                 final testUser = User(
                   testToken,
                   'Test User',
