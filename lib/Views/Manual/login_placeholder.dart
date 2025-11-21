@@ -24,7 +24,7 @@ class LoginPlaceholder extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 // Create a fake auth token and user for testing.
-                final testToken = AuthToken('test-token-123');
+                final testToken = AuthToken('abc');
 
                 // Persist token so initializer can pick it up if needed.
                 final storage = LocalStorage();

@@ -60,12 +60,13 @@ class LocalStorage {
   ) async {
     try {
       final response = await _networking.getList(
-        '/messages',
+        'messages',
         headers: {
           'Authorization': self.authToken.token,
           'Other-User-Id': otherUser.authToken.token,
         },
       );
+      print('Fetched ${response.length} messages from server');
       // Parse response (expected a List of message JSON objects)
       final List<Message> messages = [];
       for (final item in response) {
@@ -76,7 +77,22 @@ class LocalStorage {
           final bool isText = (m['isText'] == true) || (m['isText'] == 1);
           final String? text = m['text'] as String?;
           final String? imagePath = m['imagePath'] as String?;
-          final DateTime timestamp = DateTime.parse(m['timestamp'] as String);
+            DateTime timestamp;
+            try {
+            final tsValue = m['timestamp'];
+            if (tsValue is String && tsValue.isNotEmpty) {
+              timestamp = DateTime.parse(tsValue);
+            } else if (tsValue is int) {
+              // If the server sends epoch milliseconds as an integer
+              timestamp = DateTime.fromMillisecondsSinceEpoch(tsValue);
+            } else {
+              // Fallback when timestamp is missing or unexpected type
+              timestamp = DateTime.now();
+            }
+            } catch (e) {
+            print('Error parsing timestamp, using current time: $e');
+            timestamp = DateTime.now();
+            }
 
           final User sender = (senderId == self.authToken.token)
               ? self
@@ -89,6 +105,7 @@ class LocalStorage {
             Message(isText, text, imagePath, sender, receiver, timestamp),
           );
         } catch (e) {
+          print('Error parsing message from JSON: $e');
           // skip malformed message
           continue;
         }
@@ -121,7 +138,7 @@ class LocalStorage {
   Future<void> sendMessageToServer(AuthToken authToken, Message message) async {
     try {
       await _networking.post(
-        '/messages',
+        'messages',
         headers: {'Authorization': authToken.token},
         body: message.toJson(),
       );
@@ -136,7 +153,7 @@ class LocalStorage {
   Future<List<User>?> fetchAllUsersFromStorage(AuthToken authToken) async {
     try {
       final response = await _networking.getList(
-        '/users',
+        'users',
         headers: {'Authorization': authToken.token},
       );
       final List<User> users = [];
@@ -159,7 +176,7 @@ class LocalStorage {
   Future<List<User>?> fetchContactsForUser(User user) async {
     try {
       final response = await _networking.getList(
-        '/users',
+        'users',
         headers: {'Authorization': user.authToken.token, 'Filter': 'contacts'},
       );
       final List<User> users = [];

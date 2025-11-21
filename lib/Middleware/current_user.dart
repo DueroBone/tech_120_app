@@ -33,7 +33,7 @@ Future<bool> initializeCurrentUser() async {
   final networking = NetworkingService();
   try {
     final Map<String, dynamic> resp = await networking.get(
-      '/users/me',
+      'users/me',
       headers: {'Authorization': 'Bearer ${authToken.token}'},
     );
 
