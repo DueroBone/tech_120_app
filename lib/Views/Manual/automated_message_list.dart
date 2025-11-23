@@ -48,7 +48,6 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
                 if (ctx != null) {
                   Scrollable.ensureVisible(
                     ctx,
-                    duration: const Duration(milliseconds: 250),
                     alignment: 1.0,
                   );
                 }
