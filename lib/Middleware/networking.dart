@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:flutter/widgets.dart';
 
 class NetworkingService {
   static final NetworkingService _instance = NetworkingService._internal();
@@ -136,6 +137,7 @@ class NetworkingService {
     try {
       final url = Uri.parse('$baseUrl/$endpoint');
       final response = await http.get(url, headers: headers);
+      print('GET List Response: ${response.body}');
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return json.decode(response.body) as List<dynamic>;
@@ -189,6 +191,26 @@ class NetworkingService {
     } catch (e) {
       if (e is NetworkException) rethrow;
       throw NetworkException('Upload failed: $e', 0);
+    }
+  }
+
+  Future<Widget?> getUserAvatar(String imagePath) async {
+    try {
+      final url = Uri.parse('$baseUrl/users/$imagePath/avatar');
+      final response = await http.get(url);
+
+      if (response.statusCode >= 200 && response.statusCode < 300) {
+        final bytes = response.bodyBytes;
+        return Image.memory(bytes, fit: BoxFit.cover);
+      } else {
+        throw NetworkException(
+          'GET avatar failed with status: ${response.statusCode}',
+          response.statusCode,
+        );
+      }
+    } catch (e) {
+      if (e is NetworkException) rethrow;
+      throw NetworkException('GET avatar failed: $e', 0);
     }
   }
 }

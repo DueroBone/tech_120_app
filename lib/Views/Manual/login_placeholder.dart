@@ -33,9 +33,12 @@ class LoginPlaceholder extends StatelessWidget {
                 final testUser = User(
                   testToken,
                   'Test User',
-                  Image.asset('assets/images/blank_profile_pic.png'),
+                  Future<Widget?>.value(
+                    Image.asset('assets/images/blank_profile_pic.png'),
+                  ),
                   null,
                   false,
+                  'Test bio',
                 );
                 currentUserStore.setUser(testUser);
 

@@ -32,7 +32,8 @@ def create_database(db_path="database.db"):
                 id TEXT PRIMARY KEY,
                 name TEXT NOT NULL,
                 isMentor INTEGER NOT NULL DEFAULT 0,
-                imagePath TEXT
+                imagePath TEXT,
+                bio TEXT
             );
             """
         )
@@ -142,18 +143,18 @@ async def get_me(request: Request):
 
     conn = db_connect()
     cur = conn.cursor()
-    cur.execute("SELECT id, name, isMentor FROM Users WHERE id = ?", (token,))
+    cur.execute("SELECT id, name, isMentor, bio FROM Users WHERE id = ?", (token,))
     row = cur.fetchone()
     if not row:
         # Create a placeholder user so client can proceed
         cur.execute(
-            "INSERT INTO Users (id, name, isMentor) VALUES (?, ?, ?)",
-            (token, f"User {token}", 0),
+            "INSERT INTO Users (id, name, isMentor, bio) VALUES (?, ?, ?, ?)",
+            (token, f"User {token}", 0, ""),
         )
         conn.commit()
-        user = {"id": token, "name": f"User {token}", "isMentor": False}
+        user = {"id": token, "name": f"User {token}", "isMentor": False, "bio": ""}
     else:
-        user = {"id": row[0], "name": row[1], "isMentor": bool(row[2])}
+        user = {"id": row[0], "name": row[1], "isMentor": bool(row[2]), "bio": row[3]}
     conn.close()
     return user
 
@@ -163,9 +164,9 @@ async def list_users(request: Request):
     # Optional auth header allowed but not required for listing in this simple API
     conn = db_connect()
     cur = conn.cursor()
-    cur.execute("SELECT id, name, isMentor FROM Users")
+    cur.execute("SELECT id, name, isMentor, bio FROM Users")
     rows = cur.fetchall()
-    users = [{"id": r[0], "name": r[1], "isMentor": bool(r[2])} for r in rows]
+    users = [{"id": r[0], "name": r[1], "isMentor": bool(r[2]), "bio": r[3]} for r in rows]
     conn.close()
     return users
 

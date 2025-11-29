@@ -1,7 +1,4 @@
 // images are represented by server-side paths/URLs (imagePath)
-import 'package:tech_120_app/Middleware/models/auth_token.dart';
-import 'package:tech_120_app/Middleware/local_storage.dart';
-import 'package:tech_120_app/Middleware/current_user.dart';
 import 'package:tech_120_app/Middleware/models/user.dart';
 
 class Message {

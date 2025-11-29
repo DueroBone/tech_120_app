@@ -219,9 +219,12 @@ class LocalStorage {
         (index) => User(
           AuthToken('user_token_$index'),
           'User $index',
-          Image.asset('assets/images/pic${index % 5}.jpg'),
+          Future<Widget?>.value(
+            Image.asset('assets/images/pic${index % 5}.jpg'),
+          ),
           null,
           index % 2 == 0,
+          'This is a bio for User $index.',
         ),
       );
       a.add(getCurrentUserFromStorage()!);
@@ -229,6 +232,12 @@ class LocalStorage {
       await Future.delayed(const Duration(seconds: 1));
       return a;
     }
+  }
+
+  Future<Widget?> getUserAvatarFromStorage(String? imagePath) async {
+    return imagePath == null
+        ? Image.asset('assets/images/blank_profile_pic.png')
+        : await _networking.getUserAvatar(imagePath);
   }
 
   User? getCurrentUserFromStorage() {

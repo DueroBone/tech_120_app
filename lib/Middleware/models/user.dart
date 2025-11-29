@@ -1,23 +1,35 @@
-import 'dart:ui';
 import 'package:flutter/widgets.dart';
 import 'package:tech_120_app/Middleware/models/auth_token.dart';
+import 'package:tech_120_app/Middleware/local_storage.dart';
 
 class User {
   final AuthToken authToken;
   final String name;
-  final Widget? TEMPavatar;
+  final Future<Widget?>? TEMPavatar;
   final String? imagePath;
   final bool isMentor;
+  final String bio;
 
-  User(this.authToken, this.name, this.TEMPavatar, this.imagePath, this.isMentor);
+  User(
+    this.authToken,
+    this.name,
+    this.TEMPavatar,
+    this.imagePath,
+    this.isMentor,
+    this.bio,
+  );
 
   factory User.fromJson(Map<String, dynamic> json) {
+    final String? imgPath = json['imagePath'] as String?;
+    final LocalStorage storage = LocalStorage();
+    print(json);
     return User(
       AuthToken(json['id'] as String),
       json['name'] as String,
-      null,
-      json['imagePath'] as String?,
+      storage.getUserAvatarFromStorage(imgPath),
+      imgPath,
       json['isMentor'] as bool,
+      (json['bio'] as String?) ?? '',
     );
   }
 
@@ -25,5 +37,6 @@ class User {
     'id': authToken.token,
     'name': name,
     'isMentor': isMentor,
+    'bio': bio,
   };
 }

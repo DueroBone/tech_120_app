@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tech_120_app/Middleware/models/user.dart';
 import 'package:tech_120_app/Views/Manual/Mentor/mentor_profile.dart';
-import 'package:tech_120_app/Views/Manual/automated_message_list.dart';
-import 'package:tech_120_app/Views/Manual/student_messages_view.dart';
+// removed unused imports
 
 class ContactEntry extends StatefulWidget {
   const ContactEntry({super.key, required this.user});
@@ -34,15 +33,32 @@ class _ContactEntryState extends State<ContactEntry> {
                 child: CircleAvatar(
                   radius: 35.0,
                   backgroundColor: Colors.blue,
-                  child: widget.user.TEMPavatar != null
-                      ? ClipOval(
-                          child: SizedBox(
-                            width: 56.0,
-                            height: 56.0,
-                            child: widget.user.TEMPavatar!,
-                          ),
-                        )
-                      : Icon(Icons.person, size: 30.0, color: Colors.white),
+                  child: widget.user.TEMPavatar == null
+                      ? const Icon(Icons.person, size: 30.0, color: Colors.white)
+                      : FutureBuilder<Widget?>(
+                          future: widget.user.TEMPavatar,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState == ConnectionState.waiting) {
+                              return const SizedBox(
+                                width: 56.0,
+                                height: 56.0,
+                                child: Center(
+                                  child: CircularProgressIndicator(strokeWidth: 2.0),
+                                ),
+                              );
+                            }
+                            final avatar = snapshot.data;
+                            return avatar != null
+                                ? ClipOval(
+                                    child: SizedBox(
+                                      width: 56.0,
+                                      height: 56.0,
+                                      child: avatar,
+                                    ),
+                                  )
+                                : const Icon(Icons.person, size: 30.0, color: Colors.white);
+                          },
+                        ),
                 ),
               ),
               SizedBox(width: 10.0),
