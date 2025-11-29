@@ -33,7 +33,8 @@ def create_database(db_path="database.db"):
                 name TEXT NOT NULL,
                 isMentor INTEGER NOT NULL DEFAULT 0,
                 imagePath TEXT,
-                bio TEXT
+                bio TEXT,
+                major TEXT
             );
             """
         )
@@ -67,11 +68,18 @@ def create_database(db_path="database.db"):
         # Ensure existing DB has the expected schema (add imagePath to Messages if missing)
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
+        # Ensure expected optional columns exist on existing tables
         cursor.execute("PRAGMA table_info(Messages);")
         cols = [row[1] for row in cursor.fetchall()]
         if "imagePath" not in cols:
             cursor.execute("ALTER TABLE Messages ADD COLUMN imagePath TEXT;")
             print("Added imagePath column to Messages table")
+
+        cursor.execute("PRAGMA table_info(Users);")
+        user_cols = [row[1] for row in cursor.fetchall()]
+        if "major" not in user_cols:
+            cursor.execute("ALTER TABLE Users ADD COLUMN major TEXT;")
+            print("Added major column to Users table")
             conn.commit()
         conn.close()
         print(f"Database already exists at {db_path}")
@@ -143,18 +151,92 @@ async def get_me(request: Request):
 
     conn = db_connect()
     cur = conn.cursor()
-    cur.execute("SELECT id, name, isMentor, bio FROM Users WHERE id = ?", (token,))
+    cur.execute(
+        "SELECT id, name, isMentor, bio, major, imagePath FROM Users WHERE id = ?",
+        (token,),
+    )
     row = cur.fetchone()
     if not row:
         # Create a placeholder user so client can proceed
         cur.execute(
-            "INSERT INTO Users (id, name, isMentor, bio) VALUES (?, ?, ?, ?)",
-            (token, f"User {token}", 0, ""),
+            "INSERT INTO Users (id, name, isMentor, bio, major, imagePath) VALUES (?, ?, ?, ?, ?, ?)",
+            (token, f"User {token}", 0, "", "", None),
         )
         conn.commit()
-        user = {"id": token, "name": f"User {token}", "isMentor": False, "bio": ""}
+        user = {
+            "id": token,
+            "name": f"User {token}",
+            "isMentor": False,
+            "bio": "",
+            "major": "",
+            "imagePath": None,
+        }
     else:
-        user = {"id": row[0], "name": row[1], "isMentor": bool(row[2]), "bio": row[3]}
+        user = {
+            "id": row[0],
+            "name": row[1],
+            "isMentor": bool(row[2]),
+            "bio": row[3],
+            "major": row[4],
+            "imagePath": row[5],
+        }
+    conn.close()
+    return user
+
+
+@app.put("/users/me")
+async def update_me(request: Request):
+    """Update the current user's profile (bio, major, imagePath).
+
+    Requires an Authorization header containing the user id (token).
+    Accepts JSON body with optional 'bio' and 'major' fields.
+    """
+    auth = request.headers.get("authorization")
+    token = extract_token(auth)
+    if not token:
+        raise HTTPException(status_code=401, detail="Missing Authorization token")
+
+    body = await request.json()
+    bio = body.get("bio")
+    major = body.get("major")
+    image_path = body.get("imagePath")
+
+    conn = db_connect()
+    cur = conn.cursor()
+
+    # Ensure user exists
+    cur.execute("SELECT 1 FROM Users WHERE id = ?", (token,))
+    if not cur.fetchone():
+        cur.execute(
+            "INSERT INTO Users (id, name, isMentor, bio, major, imagePath) VALUES (?, ?, ?, ?, ?, ?)",
+            (token, f"User {token}", 0, bio or "", major or "", image_path),
+        )
+    else:
+        # Only update provided fields (use COALESCE so NULL doesn't overwrite existing values)
+        if bio is not None:
+            cur.execute("UPDATE Users SET bio = ? WHERE id = ?", (bio, token))
+        if major is not None:
+            cur.execute("UPDATE Users SET major = ? WHERE id = ?", (major, token))
+        if image_path is not None:
+            cur.execute(
+                "UPDATE Users SET imagePath = ? WHERE id = ?", (image_path, token)
+            )
+
+    conn.commit()
+    # Return the updated user record
+    cur.execute(
+        "SELECT id, name, isMentor, bio, major, imagePath FROM Users WHERE id = ?",
+        (token,),
+    )
+    row = cur.fetchone()
+    user = {
+        "id": row[0],
+        "name": row[1],
+        "isMentor": bool(row[2]),
+        "bio": row[3],
+        "major": row[4],
+        "imagePath": row[5],
+    }
     conn.close()
     return user
 
@@ -164,9 +246,20 @@ async def list_users(request: Request):
     # Optional auth header allowed but not required for listing in this simple API
     conn = db_connect()
     cur = conn.cursor()
-    cur.execute("SELECT id, name, isMentor, bio FROM Users")
+    cur.execute("SELECT id, name, isMentor, bio, major, imagePath FROM Users")
     rows = cur.fetchall()
-    users = [{"id": r[0], "name": r[1], "isMentor": bool(r[2]), "bio": r[3]} for r in rows]
+    users = []
+    for r in rows:
+        users.append(
+            {
+                "id": r[0],
+                "name": r[1],
+                "isMentor": bool(r[2]),
+                "bio": r[3],
+                "major": r[4],
+                "imagePath": r[5],
+            }
+        )
     conn.close()
     return users
 

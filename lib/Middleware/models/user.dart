@@ -9,6 +9,7 @@ class User {
   final String? imagePath;
   final bool isMentor;
   final String bio;
+  final String major;
 
   User(
     this.authToken,
@@ -17,12 +18,12 @@ class User {
     this.imagePath,
     this.isMentor,
     this.bio,
+    this.major,
   );
 
   factory User.fromJson(Map<String, dynamic> json) {
     final String? imgPath = json['imagePath'] as String?;
     final LocalStorage storage = LocalStorage();
-    print(json);
     return User(
       AuthToken(json['id'] as String),
       json['name'] as String,
@@ -30,6 +31,7 @@ class User {
       imgPath,
       json['isMentor'] as bool,
       (json['bio'] as String?) ?? '',
+      (json['major'] as String?) ?? '',
     );
   }
 
@@ -38,5 +40,6 @@ class User {
     'name': name,
     'isMentor': isMentor,
     'bio': bio,
+    'major': major,
   };
 }

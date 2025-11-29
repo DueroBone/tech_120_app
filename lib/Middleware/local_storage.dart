@@ -225,6 +225,7 @@ class LocalStorage {
           null,
           index % 2 == 0,
           'This is a bio for User $index.',
+          'Major ${index % 3}',
         ),
       );
       a.add(getCurrentUserFromStorage()!);

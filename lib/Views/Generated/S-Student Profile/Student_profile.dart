@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tech_120_app/Middleware/local_storage.dart';
+import 'package:tech_120_app/Middleware/networking.dart';
+import 'package:tech_120_app/Middleware/current_user.dart';
+import 'package:tech_120_app/Middleware/models/user.dart';
+
 class ProfilePage extends StatefulWidget {
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -13,6 +18,16 @@ class _ProfilePageState extends State<ProfilePage> {
     _majorController.dispose();
     _bioController.dispose();
     super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    final user = LocalStorage().getCurrentUserFromStorage();
+    if (user != null) {
+      _majorController.text = user.major;
+      _bioController.text = user.bio;
+    }
   }
 
   @override
@@ -36,7 +51,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 blurRadius: 8,
                 offset: Offset(0, 4),
                 spreadRadius: 0,
-              )
+              ),
             ],
           ),
           child: Stack(
@@ -177,6 +192,68 @@ class _ProfilePageState extends State<ProfilePage> {
                         width: 5,
                         strokeAlign: BorderSide.strokeAlignCenter,
                         color: const Color(0xFF81CBF3),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 16,
+                top: 720,
+                child: SizedBox(
+                  width: 362,
+                  height: 48,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF81CBF3),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                    onPressed: () async {
+                      final major = _majorController.text.trim();
+                      final bio = _bioController.text.trim();
+
+                      final storage = LocalStorage();
+                      final auth = await storage.getAuthToken();
+                      if (auth == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Not authenticated')),
+                        );
+                        return;
+                      }
+
+                      final networking = NetworkingService();
+                      try {
+                        final Map<String, dynamic> resp = await networking.put(
+                          'users/me',
+                          headers: {'Authorization': 'Bearer ${auth.token}'},
+                          body: {'bio': bio, 'major': major},
+                        );
+
+                        // Update global current user store so other screens reflect changes
+                        try {
+                          final updatedUser = User.fromJson(resp);
+                          currentUserStore.setUser(updatedUser);
+                        } catch (_) {
+                          // If parsing fails, ignore — backend returned unexpected shape
+                        }
+
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Profile saved')),
+                        );
+                      } catch (e) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Save failed: $e')),
+                        );
+                      }
+                    },
+                    child: const Text(
+                      'Submit',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),

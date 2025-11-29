@@ -137,7 +137,6 @@ class NetworkingService {
     try {
       final url = Uri.parse('$baseUrl/$endpoint');
       final response = await http.get(url, headers: headers);
-      print('GET List Response: ${response.body}');
 
       if (response.statusCode >= 200 && response.statusCode < 300) {
         return json.decode(response.body) as List<dynamic>;

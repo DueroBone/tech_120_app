@@ -39,6 +39,7 @@ class LoginPlaceholder extends StatelessWidget {
                   null,
                   false,
                   'Test bio',
+                  'Computer Science',
                 );
                 currentUserStore.setUser(testUser);
 
