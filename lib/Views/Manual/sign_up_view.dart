@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tech_120_app/Views/Generated/sign_up.dart';
+import 'package:tech_120_app/Views/Generated/E-Sign Up/signup_page.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
 
 class SignUpView extends StatelessWidget {
@@ -7,6 +7,6 @@ class SignUpView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MakeFullscreen(title: "Sign Up", child: Signup());
+    return MakeFullscreen(title: "Sign Up", child: SignUp());
   }
 }

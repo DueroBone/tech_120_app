@@ -10,8 +10,7 @@ class LoginPlaceholder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final storage = LocalStorage();
-    storage.clearAuthToken(); // TODO: Check if needed
+    final storage = localStorage;
     return Scaffold(
       appBar: AppBar(title: const Text('Login (placeholder)')),
       body: Center(

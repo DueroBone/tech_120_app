@@ -111,7 +111,9 @@ class HomeContent extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => MentorMessagingView(otherUser: LocalStorage().getCurrentUserFromStorage()!),
+                builder: (context) => MentorMessagingView(
+                  otherUser: localStorage.getCurrentUserFromStorage()!,
+                ),
               ),
             );
           },

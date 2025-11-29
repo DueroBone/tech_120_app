@@ -26,7 +26,8 @@ final currentUserStore = CurrentUserStore();
 ///
 /// Returns `true` if a user was successfully loaded and set, otherwise `false`.
 Future<bool> initializeCurrentUser() async {
-  final local = LocalStorage();
+  final local = localStorage;
+  local.clearAuthToken();
   final authToken = await local.getAuthToken();
   if (authToken == null) return false;
 

@@ -23,7 +23,7 @@ class User {
 
   factory User.fromJson(Map<String, dynamic> json) {
     final String? imgPath = json['imagePath'] as String?;
-    final LocalStorage storage = LocalStorage();
+    final storage = localStorage;
     return User(
       AuthToken(json['id'] as String),
       json['name'] as String,

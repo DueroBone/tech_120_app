@@ -16,10 +16,10 @@ class _ExampleDisplayListofMentorsState
     extends State<ExampleDisplayListofMentors> {
   @override
   Widget build(BuildContext context) {
-    final currentUser = LocalStorage().getCurrentUserFromStorage();
+    final currentUser = localStorage.getCurrentUserFromStorage();
     return MakeFullscreen(
       child: FutureBuilder<List<User>>(
-        future: LocalStorage()
+        future: localStorage
             .fetchContactsForUser(currentUser!)
             .then((list) => list ?? <User>[]),
         builder: (context, snapshot) {

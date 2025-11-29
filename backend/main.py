@@ -288,7 +288,7 @@ async def get_messages(request: Request):
         (token, other_id, other_id, token),
     )
     rows = cur.fetchall()
-    print(f"Fetched {len(rows)} messages")
+    # print(f"Fetched {len(rows)} messages")
     messages = []
     for r in rows:
         messages.append(

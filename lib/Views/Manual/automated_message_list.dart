@@ -17,11 +17,11 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
   final GlobalKey _lastMessageKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    final currentUser = LocalStorage().getCurrentUserFromStorage();
+    final currentUser = localStorage.getCurrentUserFromStorage();
     return MakeFullscreen(
       title: widget.otherUser.name,
       child: FutureBuilder<List<Message>?>(
-        future: LocalStorage().fetchMessagesToUser(
+        future: localStorage.fetchMessagesToUser(
           currentUser!,
           widget.otherUser,
         ),
@@ -46,10 +46,7 @@ class _AutomatedMessageListState extends State<AutomatedMessageList> {
               try {
                 final ctx = _lastMessageKey.currentContext;
                 if (ctx != null) {
-                  Scrollable.ensureVisible(
-                    ctx,
-                    alignment: 1.0,
-                  );
+                  Scrollable.ensureVisible(ctx, alignment: 1.0);
                 }
               } catch (e) {
                 // Ignore if ensureVisible fails for any reason.

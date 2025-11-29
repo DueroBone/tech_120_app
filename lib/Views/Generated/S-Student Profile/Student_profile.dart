@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-    final user = LocalStorage().getCurrentUserFromStorage();
+    final user = localStorage.getCurrentUserFromStorage();
     if (user != null) {
       _majorController.text = user.major;
       _bioController.text = user.bio;
@@ -214,7 +214,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       final major = _majorController.text.trim();
                       final bio = _bioController.text.trim();
 
-                      final storage = LocalStorage();
+                      final storage = localStorage;
                       final auth = await storage.getAuthToken();
                       if (auth == null) {
                         ScaffoldMessenger.of(context).showSnackBar(

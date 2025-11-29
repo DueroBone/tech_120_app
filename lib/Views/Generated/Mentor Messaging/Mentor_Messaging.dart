@@ -22,7 +22,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
   }
 
   Future<void> _sendMessage() async {
-    final local = LocalStorage();
+    final local = localStorage;
     final sender = local.getCurrentUserFromStorage();
     final receiver = widget.otherUser;
     final text = _messageController.text.trim();

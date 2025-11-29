@@ -11,7 +11,7 @@ bool isIsAuthenticated(AuthToken? authToken) {
 }
 
 Future<AuthToken?> getAuthToken() async {
-  LocalStorage storage = LocalStorage();
+  final storage = localStorage;
   return await storage.getAuthToken();
 }
 

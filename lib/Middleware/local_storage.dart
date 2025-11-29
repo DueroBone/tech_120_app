@@ -12,7 +12,9 @@ import 'package:tech_120_app/Middleware/current_user.dart';
 // forward to the networking layer (no real local DB) so messaging code can
 // be switched to use local storage later without changing public APIs.
 
-class LocalStorage {
+final _LocalStorage localStorage = _LocalStorage();
+
+class _LocalStorage {
   static final NetworkingService _networking = NetworkingService();
 
   // ============= Auth Token Storage =============
