@@ -211,10 +211,10 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
               // placeholders for the layout.
               Positioned(
                 left: 9,
-                top: 47,
+                top: 0,
                 child: Container(
-                  width: 402,
-                  height: 420,
+                  width: 420,
+                  height: 553,
                   child: widget.otherUser != null
                       ? AutomatedMessageList(otherUser: widget.otherUser!)
                       : Column(
