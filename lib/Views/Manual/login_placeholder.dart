@@ -50,6 +50,34 @@ class LoginPlaceholder extends StatelessWidget {
               },
               child: const Text('Continue to App'),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                // Create a fake auth token and user for testing.
+                final testToken = AuthToken('456');
+
+                // Persist token so initializer can pick it up if needed.
+                await storage.saveAuthToken(testToken);
+                final testUser = User(
+                  testToken,
+                  'Test User',
+                  Future<Widget?>.value(
+                    Image.asset('assets/images/blank_profile_pic.png'),
+                  ),
+                  null,
+                  false,
+                  'Test bio2',
+                  'Computer Science2',
+                );
+                currentUserStore.setUser(testUser);
+
+                // Navigate into the main app scaffold so bottom tabs are present.
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => const BottomTabs()),
+                );
+              },
+              child: const Text('Continue to App as Different User'),
+            ),
           ],
         ),
       ),

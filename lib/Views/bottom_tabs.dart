@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tech_120_app/Views/Manual/home_page_view.dart';
-// removed unused import
 import 'package:tech_120_app/Views/Generated/S-Student%20Profile/Student_profile.dart';
 import 'package:tech_120_app/Views/tabs_controller.dart';
 import 'package:tech_120_app/Views/make_fullscreen.dart';
+import 'package:tech_120_app/Views/Manual/example_display_listof_mentors.dart';
 
 class BottomTabs extends StatefulWidget {
   const BottomTabs({super.key});
@@ -13,7 +13,7 @@ class BottomTabs extends StatefulWidget {
 }
 
 class _BottomTabsState extends State<BottomTabs> {
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   final List<String> _defaultTitles = ['Home', 'Chat', 'Profile'];
 
   final List<GlobalKey<NavigatorState>> _navigatorKeys = [
@@ -136,7 +136,7 @@ class _BottomTabsState extends State<BottomTabs> {
                       1,
                       (context) => const MakeFullscreen(
                         title: 'Chat',
-                        child: Placeholder(),
+                        child: ExampleDisplayListofMentors(),
                       ),
                     ),
                     _buildNavigator(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class ChatBubbleRaw extends StatelessWidget {
+  const ChatBubbleRaw({super.key, this.bubbleColor = const Color(0xFF4FA1FF)});
+  final Color bubbleColor;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -9,7 +12,7 @@ class ChatBubbleRaw extends StatelessWidget {
         Positioned.fill(
           child: Container(
             decoration: ShapeDecoration(
-              color: const Color(0xFF4FA1FF),
+              color: bubbleColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -23,7 +26,7 @@ class ChatBubbleRaw extends StatelessWidget {
           child: Container(
             width: 32,
             height: 32,
-            decoration: BoxDecoration(color: const Color(0xFF4FA1FF)),
+            decoration: BoxDecoration(color: bubbleColor),
           ),
         ),
       ],

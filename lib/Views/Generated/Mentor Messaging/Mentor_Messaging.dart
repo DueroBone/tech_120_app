@@ -94,7 +94,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
           child: Stack(
             children: [
               Positioned(
-                left: -21,
+                left: 0,
                 top: 553,
                 child: Container(
                   width: 438,
@@ -210,66 +210,19 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
               // `otherUser` is provided; otherwise show lightweight
               // placeholders for the layout.
               Positioned(
-                left: 9,
+                left: 0,
                 top: 0,
                 child: Container(
                   width: 420,
                   height: 553,
                   child: widget.otherUser != null
-                      ? AutomatedMessageList(otherUser: widget.otherUser!)
-                      : Column(
-                          children: [
-                            // Simple visual placeholders when no recipient
-                            // is selected.
-                            Container(
-                              width: 213,
-                              height: 56,
-                              decoration: ShapeDecoration(
-                                color: const Color(0xFF81CBF3),
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(width: 3),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Container(
-                              width: 213,
-                              height: 87,
-                              decoration: ShapeDecoration(
-                                color: const Color(0xFFD9D9D9),
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(width: 3),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Container(
-                              width: 220,
-                              height: 128,
-                              decoration: ShapeDecoration(
-                                color: const Color(0xFF81CBF3),
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(width: 3),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: 12),
-                            Container(
-                              width: 201,
-                              height: 51,
-                              decoration: ShapeDecoration(
-                                color: const Color(0xFFD9D9D9),
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(width: 3),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                      ? Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
+                          child: AutomatedMessageList(
+                            otherUser: widget.otherUser!,
+                          ),
+                        )
+                      : Placeholder(),
                 ),
               ),
               Positioned(
