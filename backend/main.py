@@ -1,6 +1,7 @@
 import os
 import uuid
 import sqlite3
+import logging
 from typing import Optional
 from fastapi import FastAPI, UploadFile, File, HTTPException, Request, Form
 from fastapi.responses import JSONResponse
@@ -359,4 +360,14 @@ async def post_message(request: Request):
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="127.0.0.1", port=8011)
+    # Configure logging
+    log_config = uvicorn.config.LOGGING_CONFIG
+    log_config["handlers"]["file"] = {
+        "class": "logging.FileHandler",
+        "filename": os.path.join(os.path.dirname(__file__), "uvicorn.log"),
+        "formatter": "default",
+    }
+    log_config["loggers"]["uvicorn"]["handlers"] = ["default", "file"]
+    log_config["loggers"]["uvicorn.access"]["handlers"] = ["access", "file"]
+
+    uvicorn.run(app, host="127.0.0.1", port=8011, log_config=log_config)
