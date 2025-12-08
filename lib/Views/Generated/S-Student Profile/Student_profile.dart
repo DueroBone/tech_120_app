@@ -58,7 +58,7 @@ class _ProfilePageState extends State<ProfilePage> {
             children: [
               Positioned(
                 left: 16,
-                top: 312,
+                top: 212,
                 child: Container(
                   width: 362,
                   height: 48,
@@ -102,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Positioned(
                 left: 16,
-                top: 375,
+                top: 275,
                 child: Container(
                   width: 364,
                   height: 282,
@@ -126,10 +126,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       hintText: 'Write a short bio',
                       hintStyle: TextStyle(
                         color: Colors.black38,
-                        fontSize: 32,
+                        fontSize: 18,
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
-                        height: 0.62,
+                        height: 1,
                         letterSpacing: 0.10,
                       ),
                       isCollapsed: true,
@@ -137,10 +137,10 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 32,
+                      fontSize: 18,
                       fontFamily: 'Inter',
                       fontWeight: FontWeight.w500,
-                      height: 0.62,
+                      height: 1.5,
                       letterSpacing: 0.10,
                     ),
                   ),
@@ -148,13 +148,13 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Positioned(
                 left: 137,
-                top: 175,
+                top: 75,
                 child: Container(
                   width: 122,
                   height: 122,
                   decoration: ShapeDecoration(
                     image: DecorationImage(
-                      image: NetworkImage("https://placehold.co/122x122"),
+                      image: Image.asset('assets/images/pic2.jpg').image,
                       fit: BoxFit.cover,
                     ),
                     shape: RoundedRectangleBorder(
@@ -164,26 +164,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                 ),
               ),
-              // Removed static 'Bio:' and 'Major:' label widgets
-              Positioned(
-                left: 0,
-                top: 167,
-                child: Container(
-                  width: 393,
-                  decoration: ShapeDecoration(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                        width: 5,
-                        strokeAlign: BorderSide.strokeAlignCenter,
-                        color: const Color(0xFF81CBF3),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
               Positioned(
                 left: 1,
-                top: 681,
+                top: 581,
                 child: Container(
                   width: 393,
                   decoration: ShapeDecoration(
@@ -199,7 +182,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Positioned(
                 left: 16,
-                top: 720,
+                top: 620,
                 child: SizedBox(
                   width: 362,
                   height: 48,

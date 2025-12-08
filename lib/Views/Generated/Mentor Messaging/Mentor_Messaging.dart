@@ -115,7 +115,7 @@ class _MessagingStudentSideState extends State<MessagingStudentSide> {
                         left: 0,
                         top: 0,
                         child: Container(
-                          width: 410,
+                          width: 409,
                           height: 117,
                           decoration: ShapeDecoration(
                             color: const Color(0xFFD9D9D9),

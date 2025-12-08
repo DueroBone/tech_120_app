@@ -12,8 +12,8 @@ class NetworkingService {
   // Default to HTTP (backend runs without TLS locally). If you're running
   // the Android emulator, use 'http://10.0.2.2:8000' when calling
   // `NetworkingService().setBaseUrl(...)` from your app startup.
-  String baseUrl = 'http://mentormatch.duelmood.com';
-  // String baseUrl = 'http://10.0.2.2:8011';
+  // String baseUrl = 'http://mentormatch.duelmood.com';
+  String baseUrl = 'http://10.0.2.2:8011';
 
   // Configure base URL
   void setBaseUrl(String url) {
